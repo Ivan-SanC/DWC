@@ -13,7 +13,7 @@ let b=(x>y);
 //Tipos de datos
 console.log(b);
 console.log(Boolean(true));
-console.log(Boolean(1));
+console.log(Boolean(6));
 console.log(Boolean(0));
 console.log(Boolean("Hola"));
 console.log(Boolean(""));
