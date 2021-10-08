@@ -1,9 +1,12 @@
+
+//Declaracion variables
 var nom;
 var apellido1;
 var apellido2;
 var sueldo;
 var edad;
 
+//Funcion para asignar datos a las variables
 function introducirDatos(){
     nom=prompt("Nombre: ");
     apellido1=prompt("Primer apellido: ");
@@ -12,6 +15,7 @@ function introducirDatos(){
     sueldo= prompt("Sueldo: ");
 }
 
+//Funcion que comprueba la franja de edad y muestra el sueldo
 function devuelveDatos(){
     if(sueldo>=1000 && sueldo<=2000){
         if(edad>45){
@@ -33,5 +37,6 @@ function devuelveDatos(){
     }
 }
 
+//Ejecucion funciones
 introducirDatos();
 devuelveDatos();
