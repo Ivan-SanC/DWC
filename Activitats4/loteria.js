@@ -14,5 +14,6 @@ for (i=1;i<=50;i++) {
     }
     document.write(`<\p>`);
 
+    
     combinacion.clear();
 }
