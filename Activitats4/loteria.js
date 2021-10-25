@@ -1,18 +1,18 @@
-const combinaciones=new Set();
- for(i=1;i<=50;i++){
-     document.write(`<h1>Combinación ${i}:</h1>`)
 
-    do{
-        combinaciones.add(parseInt(Math.random()*49)+1);
+const combinacion = new Set();
 
-    }while(combinaciones.size<6);
+for (i=1;i<=50;i++) {
+    document.write(`<h1>Combinación ${i}:</h1>`)
+
+    do {
+        combinacion.add(parseInt(Math.random()*49) + 1);
+    } while (combinacion.size<6);
+
     document.write(`<p>`)
-
-
-    for(numero of combinaciones) {
+    for(numero of combinacion) {
         document.write (`${numero} ` );
     }
     document.write(`<\p>`);
 
-    combinaciones.clear();
+    combinacion.clear();
 }
