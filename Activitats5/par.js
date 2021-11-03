@@ -14,3 +14,5 @@ for(i=0;i<500;i++){
     document.write(numRandom+" "+par(numRandom)+"<br>");
 
 }
+
+//const par=(x)=>(x%2==0)?"par":"impar"
