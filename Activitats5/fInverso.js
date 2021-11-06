@@ -2,15 +2,17 @@ var palabras;
 const lista= new Set();
 do{
     palabras=prompt("Introduce palabras");
-    lista.add(palabras);
-
-}while(palabras!=null||palabras=="");
+    if(palabras!=null){
+        lista.add(palabras);
+    }
+}while(palabras!=null);
 
 const array=[...lista];
-function ordenPersonal(a,b){
+function ordena(a,b){
     return a.length-b.length;
 }
 
 array.sort((a,b)=>a.localeCompare(b,'es'));
 const reversed=array.reverse();
-document.write(reversed);
+
+document.write(`<strong>Palabras ordenadas en orden inverso: </strong>`+reversed);
