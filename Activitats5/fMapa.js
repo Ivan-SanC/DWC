@@ -6,10 +6,11 @@ var existe;
 
 //introduce palabras en el array
 do{
+
 palabras=prompt("Introduce palabras.")
+
 if(palabras!=null && palabras!=""){
     array.push(palabras);
-
 }
 
 }while(palabras!=null && palabras!="");
