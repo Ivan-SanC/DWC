@@ -1,4 +1,5 @@
 
+//No recursiva
 
 function fibonacci(num){
     let num1=0;

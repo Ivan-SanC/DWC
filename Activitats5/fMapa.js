@@ -1,7 +1,7 @@
 //Variables
-var array=[];
+const array=[];
 var palabras;
-var map= new Map();
+const map= new Map();
 var existe;
 
 //introduce palabras en el array
