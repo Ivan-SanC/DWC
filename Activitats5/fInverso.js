@@ -14,4 +14,4 @@ array=[...lista];
 array.sort((a,b)=>a.localeCompare(b,'es'));
 const reversed=array.reverse();
 
-document.write(`<strong>Palabras ordenadas en orden inverso: </strong>`+reversed);
+document.write(`<b>Palabras ordenadas en orden inverso: </b>`+reversed);
