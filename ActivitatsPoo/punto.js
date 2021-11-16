@@ -7,4 +7,7 @@ function Punto(coordX, coordY){
     this.sumar=(punto2)=>
     this.toString=()=> `(${this.x},${this.y})`;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 122465f8bf0ef1e915f8758533f3d8d346fbf68c
