@@ -2,22 +2,25 @@ function Punto(coordX, coordY){
     this.x=coordX;
     this.y=coordY;
 
-    //this.cambiar=(coordX, coordY)=> this.x=coordX; this.y=coordY;
+    
     this.cambiar=function (coordX, coordY){ 
         this.x=coordX; 
         this.y=coordY;
     }
 
-    this.copia=()=> this;
+    this.copia=()=> new Punto(this.x,this.y);
 
     this.obtenerDistancia=(punto2)=>Math.sqrt(Math.pow(Math.abs(this.x-(punto2.x)),2)+(Math.pow(Math.abs(this.y-(punto2.y)),2)));
 
-    //this.sumar=(punto2)=> punto2.x+this.x; punto2.y+this.y;
+
     this.sumar=function(punto2){
-        this.x=punto2.x+this.x; 
-        this.y=punto2.y+this.y;
-        return this;
+        valorX=this.x+punto2.x;
+        valorY=this.y+punto2.y;
+        punto3=new Punto(valorX,valorY);
+
+        return punto3;
     }
+    
     this.toString=()=> `(${this.x},${this.y})`;
 }
 
