@@ -4,41 +4,22 @@ function Ordenador(marca,modelo,ram=4,disco=512,pulgadas=17){
     this.ram=ram;
     this.disco=disco;
     this.pulgadas=pulgadas;
-    
-    
-}
-
-Ordenador.prototype.toString= function(){
-    return `
-    Marca: ${this.marca}
-    Modelo: ${this.modelo}
-    RAM: ${this.ram}
-    Disco Duro: ${this.disco}GB 
-    Pulgadas: ${this.pulgadas} pulgadas`;
-}
-
-
-function Portatil(marca,modelo,ram=4,disco=256,pulgadas=13,autonomia=4){
-    this.marca=marca;
-    this.modelo=modelo;
-    this.ram=ram;
-    this.disco=disco;
-    this.pulgadas=pulgadas;
-    this.autonomia=autonomia;
-
-    
-}
-
-Portatil.prototype.toString= function(){
-    return `
-    Marca: ${this.marca}
-    Modelo: ${this.modelo}
-    RAM: ${this.ram}
-    Disco Duro: ${this.disco}GB 
-    Pulgadas: ${this.pulgadas} pulgadas
-    Autonomía: ${this.autonomia} horas`;
+    this.toString= function(){
+        return `
+        Marca: ${this.marca}
+        Modelo: ${this.modelo}
+        RAM: ${this.ram}
+        Disco Duro: ${this.disco}GB 
+        Pulgadas: ${this.pulgadas} pulgadas`;
     }
-
+    
+}
+function Portatil(marca,modelo,ram=4,disco=256,pulgadas=13,autonomia=4){
+    this.__proto__=new Ordenador( marca,modelo,ram,disco,pulgadas,autonomia);
+    this.toString=function(){
+        return this.__proto__.toString()+`\n\t\tAutonomia: ${autonomia} horas`;
+    }
+}
 
 
 var o1 = new Ordenador("HP", "EliteDisplay",8,256,23);
