@@ -4,7 +4,7 @@ function Ordenador(marca,modelo,ram=4,disco=512,pulgadas=17){
     this.ram=ram;
     this.disco=disco;
     this.pulgadas=pulgadas;
-
+    
     
 }
 
