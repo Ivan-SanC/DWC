@@ -14,9 +14,9 @@ function Punto(coordX, coordY){
 
 
     this.sumar=function(punto2){
-        let valorX=this.x+punto2.x;
-        let valorY=this.y+punto2.y;
-        let punto3=new Punto(valorX,valorY);
+       let valorX=this.x+punto2.x;
+       let valorY=this.y+punto2.y;
+       let punto3=new Punto(valorX,valorY);
 
         return punto3;
     }
