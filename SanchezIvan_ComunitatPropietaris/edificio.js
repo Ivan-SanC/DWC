@@ -55,7 +55,7 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
             `Planta: ${clave}
                     Puerta: ${valor}`;
                     for(let i=0;i<){
-
+//mapa planta listado puertas 
                     }
         }
     
