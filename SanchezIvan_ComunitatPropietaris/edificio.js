@@ -142,3 +142,76 @@ console.log(edificio1.imprimirCodigoPostal());
 /* SALIDA:
     Código Postal(CP): 007005
 */
+
+
+//Ejercicio 2 JSON
+//https://programmerclick.com/article/151521994/
+let edificio7 = `{
+    "tipoVia":"Calle",
+    "nombreVia":"García Prieto",
+    "numeroEdificio": "58A",
+    "codigoPostal": "07010",
+    "mapaPropietariosEdificio": {
+        "A": {
+            "1A": ["José Antonio López"],
+            "2A": ["Luisa Martínez"],
+            "3A": ["Marta Castellón", "José Montero"]
+        },
+        "B": {
+            "1B": [],
+            "2B": ["Antonio Pereira"],
+            "3B": []
+        }
+    }
+}`;
+let edificio8=JSON.parse(edificio7);
+console.log(edificio8);
+console.log(edificio8.imprimirTodosPropietarios());
+
+//Ejercicio 3
+let tipoVia;
+let nombreVia;
+let numEdf;
+let cp;
+let planta;
+let puerta;
+let propietario;
+let cancelar=false;
+
+do{
+    tipoVia=prompt("Introduce el tipo de vìa:");
+    if(tipoVia==null||tipoVia==""){
+        cancelar=true;
+    }
+
+    nombreVia=prompt("Introduce el nombre de la vía: ");
+    if(nombreVia==null||nombreVia==""){
+        cancelar=true;
+    }
+
+    numEdf=prompt("Introduce el numero del edificio: ");
+    if(numEdf==null||numEdf==""){
+        cancelar=true;
+    }
+
+    cp=prompt("Introduce el código postal: ");
+    if(cp==null||cp==""){
+        cancelar=true;
+    }
+
+    planta=prompt("Introduce la planta: ");
+    if(planta==null||planta==""){
+        cancelar=true;
+    }
+
+    puerta=prompt("Introduce la puerta: ");
+    if(puerta==null||puerta==""){
+        cancelar=true;
+    }
+
+    propietario=prompt("Introduce el propietario: ");
+    if(propietario==null||propietario==""){
+        cancelar=true;
+    }
+
+}while(cancelar==false);
