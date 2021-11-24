@@ -7,9 +7,10 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     this.codigoPostal=codigoPostal;
     this.mapaPropiertariosEdificio=new Map();
 
-    //Metodos
 
-    //Agregar
+    //METODOS
+
+        //Agregar
     this.agregarPlanta=function(numeroPlanta){
         this.mapaPropiertariosEdificio.set(numeroPlanta,new Map());
     }
@@ -23,12 +24,12 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     }
 
 
-    //Modificar
+        //Modificar
     this.modificarTipoVia=function(nuevoTipoVia){
         this.tipoVia=nuevoTipoVia;
     }
 
-    this.modificrNombreVia=function(nuevoNombreVia){
+    this.modificarNombreVia=function(nuevoNombreVia){
         this.nombreVia=nuevoNombreVia
     }
 
@@ -41,26 +42,33 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     }
 
 
-    //Imprimir
-    this.imprimirTipoVia=()=> "imprimirTipoVia: "+this.tipoVia;
+        //Imprimir
+    this.imprimirTipoVia=()=> "Tipo de via: "+this.tipoVia;
 
-    this.imprimirNombreVia=()=>"imprimirNombreVia: "+this.nombreVia;
+    this.imprimirNombreVia=()=>"Nombre de la vía: "+this.nombreVia;
 
-    this.imprimirNumeroEdificio=()=>"imprimirNumeroEdificio: "+this.numeroEdificio;
+    this.imprimirNumeroEdificio=()=>"Número del edificio: "+this.numeroEdificio;
     
-    this.imprimirCodigoPostal=()=>"imprimirCodigoPostal: "+this.codigoPostal;
+    this.imprimirCodigoPostal=()=>"Código Postal(CP): "+this.codigoPostal;
     
     this.imprimirTodosPropietarios=function(){
-        for (let [clave,valor] of this.mapaPropiertariosEdificio) {
-            `Planta: ${clave}
-                    Puerta: ${valor}`;
-                    for(let i=0;i<){
-//mapa planta listado puertas 
+        let string="";
+        for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
+            string += ` Planta: ${plantas} \n`;
+
+                    for(let[puerta,propietarios]of puertas){
+                        string +=`\t Puerta: ${puerta} \n`;
+                        
+                        for(let i=0;i<propietarios.length;i++){
+                          string+=  `\t\t ${propietarios[i]} \n`;
+                        }
                     }
+            }
+            return string;
         }
     
 }
-const edificio1 = new Edificio('calle', 'marques de la fontsanta', 60, '07005');
+const edificio1 = new Edificio('calle', 'marques rubio', 70, '07005');
 
 edificio1.agregarPlanta('1A');
 edificio1.agregarPlanta('1B');
@@ -111,4 +119,26 @@ console.log(edificio1.imprimirTodosPropietarios());
     Planta: 1B
         Puerta: 1
             Miguel López López
+*/
+edificio1.modificarTipoVia('avenida');
+edificio1.modificarNombreVia('Marques de la Fontsanta');
+edificio1.modificarNumeroEdificio('60A');
+edificio1.modificarCodigoPostal('007005');
+console.log(edificio1.imprimirTipoVia());
+/* SALIDA:
+    Tipo de via: avenida
+*/
+console.log(edificio1.imprimirNombreVia());
+/* SALIDA:
+    Nombre de la vía: Marques de la Fontsanta
+*/
+
+console.log(edificio1.imprimirNumeroEdificio());
+/* SALIDA:
+    Número del edificio 60A
+*/
+
+console.log(edificio1.imprimirCodigoPostal());
+/* SALIDA:
+    Código Postal(CP): 007005
 */
