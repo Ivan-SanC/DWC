@@ -166,6 +166,7 @@ let edificio7 = `{
 }`;
 let edificio8=JSON.parse(edificio7);
 console.log(edificio8);
+//no imprime map
 console.log(edificio8.imprimirTodosPropietarios());
 
 //Ejercicio 3
@@ -179,6 +180,8 @@ let propietario;
 let cancelar=false;
 
 do{
+    //preguntar que datos no se deben repetir
+    //como meter mas de un propietario?
     tipoVia=prompt("Introduce el tipo de vìa:");
     if(tipoVia==null||tipoVia==""){
         cancelar=true;
@@ -193,25 +196,31 @@ do{
     if(numEdf==null||numEdf==""){
         cancelar=true;
     }
-
-    cp=prompt("Introduce el código postal: ");
+    //solo numeros
+        cp=prompt("Introduce el código postal: ");
     if(cp==null||cp==""){
         cancelar=true;
     }
-
+    
+    //no negativas
     planta=prompt("Introduce la planta: ");
     if(planta==null||planta==""){
         cancelar=true;
     }
-
+    //no negativas
     puerta=prompt("Introduce la puerta: ");
     if(puerta==null||puerta==""){
         cancelar=true;
     }
 
+    //solo letras
     propietario=prompt("Introduce el propietario: ");
     if(propietario==null||propietario==""){
         cancelar=true;
     }
-
+    if(cancelar==false){
+        alert("Se ha introducido un dato nuevo")
+        //guarda los datos
+        //tipoVia; nombreVia; numEdf; cp; planta; puerta; propietario;
+    }
 }while(cancelar==false);
