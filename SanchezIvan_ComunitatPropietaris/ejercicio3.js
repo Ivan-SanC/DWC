@@ -50,7 +50,7 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
         
     this.imprimirTodosPropietarios=function(){
         let string="";
-        
+
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
             string += `<h2>Planta: ${plantas}</strong></h2>`;
     
@@ -79,7 +79,6 @@ let cancelar=false;
 
 do{
     //preguntar que datos no se deben repetir
-    //como meter mas de un propietario?
     tipoVia=prompt("Introduce el tipo de vìa:");
     if(tipoVia==null||tipoVia==""){
         cancelar=true;
@@ -94,7 +93,7 @@ do{
     if(numEdf==null||numEdf==""){
         cancelar=true;
     }
-    //solo numeros
+    //solo numeros 5max
         cp=prompt("Introduce el código postal: ");
     if(cp==null||cp==""){
         cancelar=true;
