@@ -43,29 +43,27 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
 
 
         //Imprimir
-    this.imprimirTipoVia=()=> "Tipo de via: "+this.tipoVia;
-
-    this.imprimirNombreVia=()=>"Nombre de la vía: "+this.nombreVia;
-
-    this.imprimirNumeroEdificio=()=>"Número del edificio: "+this.numeroEdificio;
-    
-    this.imprimirCodigoPostal=()=>"Código Postal(CP): "+this.codigoPostal;
-    
+    this.imprimirTipoVia=()=>this.tipoVia;
+    this.imprimirNombreVia=()=>this.nombreVia;
+    this.imprimirNumeroEdificio=()=>this.numeroEdificio;    
+    this.imprimirCodigoPostal=()=>this.codigoPostal;
+        
     this.imprimirTodosPropietarios=function(){
         let string="";
+        
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
-            string += ` Planta: ${plantas} \n`;
-
-                    for(let[puerta,propietarios]of puertas){
-                        string +=`\t Puerta: ${puerta} \n`;
-                        
-                        for(let i=0;i<propietarios.length;i++){
-                          string+=  `\t\t ${propietarios[i]} \n`;
-                        }
-                    }
+            string += `<h2>Planta: ${plantas}</strong></h2>`;
+    
+            for(let[puerta,propietarios]of puertas){
+                string +=`<h3>&nbsp;&nbsp;&nbsp;Puerta: ${puerta}</h3>`;
+                            
+                for(let i=0;i<propietarios.length;i++){
+                    string+=  `<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${propietarios[i]}</p>`;
+                }
             }
-            return string;
         }
+        return string;
+    }
     
 }
 //Ejercicio 3

@@ -43,24 +43,24 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
 
 
         //Imprimir
-    this.imprimirTipoVia=()=> "Tipo de via: "+this.tipoVia;
+    this.imprimirTipoVia=()=>this.tipoVia;
 
-    this.imprimirNombreVia=()=>"Nombre de la vía: "+this.nombreVia;
+    this.imprimirNombreVia=()=>this.nombreVia;
 
-    this.imprimirNumeroEdificio=()=>"Número del edificio: "+this.numeroEdificio;
+    this.imprimirNumeroEdificio=()=>this.numeroEdificio;
     
-    this.imprimirCodigoPostal=()=>"Código Postal(CP): "+this.codigoPostal;
+    this.imprimirCodigoPostal=()=>this.codigoPostal;
     
     this.imprimirTodosPropietarios=function(){
         let string="";
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
-            string += ` Planta: ${plantas} \n`;
+            string += `<h2>Planta: ${plantas}</strong></h2>`;
 
                     for(let[puerta,propietarios]of puertas){
-                        string +=`\t Puerta: ${puerta} \n`;
+                        string +=`<h3>&nbsp;&nbsp;&nbsp;Puerta: ${puerta}</h3>`;
                         
                         for(let i=0;i<propietarios.length;i++){
-                          string+=  `\t\t ${propietarios[i]} \n`;
+                          string+=  `<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${propietarios[i]}</p>`;
                         }
                     }
             }
@@ -99,7 +99,7 @@ let edificio1 = `{
 let edificio2=JSON.parse(edificio1);
 console.log(edificio2);
 
-//Funcion para transformar un objeto a la clase edificio
+//Funcion para transformar edificio2 a objeto de Edificio
 function transformaObjeto(obj){
 
 //Se crea el nuevo Edificio
@@ -120,5 +120,29 @@ let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, o
     return nuevoEdificio;
 }
 
-edificioArreglado=transformaObjeto(edificio2);
-console.log(edificioArreglado.imprimirTodosPropietarios());
+let edificioArreglado=transformaObjeto(edificio2);
+
+//Fondo aleatorio
+function randomColor(){
+    var x = parseInt(Math.random() * 256);
+    var y = parseInt(Math.random() * 256);
+    var z = parseInt(Math.random() * 256);
+    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+
+//Ejecucion
+document.body.style.background = bgColor;
+}
+
+//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+/*let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
+let saltos=tabulacion.replace(/\n/g,"<br>");
+let edificioHtml=saltos;
+document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
+${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);*/
+
+//Ejecucion HTML
+    //Texto
+document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
+${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioArreglado.imprimirTodosPropietarios()}`);
+    //Fondo
+randomColor();    
