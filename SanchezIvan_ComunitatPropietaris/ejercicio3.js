@@ -68,53 +68,59 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
         }
     
 }
+//Ejercicio 3
+//https://github.com/blnlaserna/20211111-16_Teoria/blob/main/14_ExpresionesRegulares.js
+let tipoVia;
+let nombreVia;
+let numEdf;
+let cp;
+let planta;
+let puerta;
+let propietario;
+let cancelar=false;
 
-
-//Ejercicio 2 JSON
-//https://programmerclick.com/article/151521994/
-let edificio1 = `{
-    "tipoVia":"Calle",
-    "nombreVia":"García Prieto",
-    "numeroEdificio": "58A",
-    "codigoPostal": "07010",
-    "mapaPropietariosEdificio": {
-        "A": {
-            "1A": ["José Antonio López"],
-            "2A": ["Luisa Martínez"],
-            "3A": ["Marta Castellón", "José Montero"]
-        },
-        "B": {
-            "1B": [],
-            "2B": ["Antonio Pereira"],
-            "3B": []
-        }
+do{
+    //preguntar que datos no se deben repetir
+    //como meter mas de un propietario?
+    tipoVia=prompt("Introduce el tipo de vìa:");
+    if(tipoVia==null||tipoVia==""){
+        cancelar=true;
     }
-}`;
 
-//https://github.com/blnlaserna/20211111-16_Teoria/blob/main/6_RecorrerPropiedadesObjeto.js
-//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
-//https://www.delftstack.com/es/howto/javascript/loop-through-object-javascript/
-
-let edificio2=JSON.parse(edificio1);
-console.log(edificio2);
-
-function arreglarMap(obj){
-
-let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, obj.codigoPostal);
-
-    for (let planta in obj.mapaPropietariosEdificio) {
-    nuevoEdificio.agregarPlanta(planta);
-
-        for (let puerta in obj.mapaPropietariosEdificio[planta]) {
-        nuevoEdificio.agregarPuerta(planta, puerta);
-
-            for (let propietario in obj.mapaPropietariosEdificio[planta][puerta]) {
-            nuevoEdificio.agregarPropietario(obj.mapaPropietariosEdificio[planta][puerta][propietario], planta, puerta);  
-            }
-        }
+    nombreVia=prompt("Introduce el nombre de la vía: ");
+    if(nombreVia==null||nombreVia==""){
+        cancelar=true;
     }
-    return nuevoEdificio;
-}
 
-edificioArreglado=arreglarMap(edificio2);
-console.log(edificioArreglado.imprimirTodosPropietarios());
+    numEdf=prompt("Introduce el numero del edificio: ");
+    if(numEdf==null||numEdf==""){
+        cancelar=true;
+    }
+    //solo numeros
+        cp=prompt("Introduce el código postal: ");
+    if(cp==null||cp==""){
+        cancelar=true;
+    }
+    
+    //no negativas
+    planta=prompt("Introduce la planta: ");
+    if(planta==null||planta==""){
+        cancelar=true;
+    }
+    //no negativas
+    puerta=prompt("Introduce la puerta: ");
+    if(puerta==null||puerta==""){
+        cancelar=true;
+    }
+
+    //solo letras confirm para otro propietario
+    propietario=prompt("Introduce el propietario: ");
+    if(propietario==null||propietario==""){
+        cancelar=true;
+    }
+    if(cancelar==false){
+        alert("Se ha introducido un dato nuevo")
+        //guarda los datos
+        //tipoVia; nombreVia; numEdf; cp; planta; puerta; propietario;
+    }
+}while(cancelar==false);

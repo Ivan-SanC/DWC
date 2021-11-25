@@ -68,53 +68,28 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
         }
     
 }
+const edificio1 = new Edificio('calle', 'marques rubio', 70, '07005');
 
+edificio1.agregarPlanta('1A');
+edificio1.agregarPlanta('1B');
 
-//Ejercicio 2 JSON
-//https://programmerclick.com/article/151521994/
-let edificio1 = `{
-    "tipoVia":"Calle",
-    "nombreVia":"García Prieto",
-    "numeroEdificio": "58A",
-    "codigoPostal": "07010",
-    "mapaPropietariosEdificio": {
-        "A": {
-            "1A": ["José Antonio López"],
-            "2A": ["Luisa Martínez"],
-            "3A": ["Marta Castellón", "José Montero"]
-        },
-        "B": {
-            "1B": [],
-            "2B": ["Antonio Pereira"],
-            "3B": []
-        }
-    }
-}`;
+edificio1.agregarPuerta('1A','3');
+edificio1.agregarPuerta('1A','2');
+edificio1.agregarPuerta('1B','1')
 
-//https://github.com/blnlaserna/20211111-16_Teoria/blob/main/6_RecorrerPropiedadesObjeto.js
-//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
-//https://www.delftstack.com/es/howto/javascript/loop-through-object-javascript/
+edificio1.agregarPropietario('Belén Laserna Belenguer','1A','3');
+edificio1.agregarPropietario('Pedro Jimenez Vázquez','1A','3');
+edificio1.agregarPropietario('Ana María Rodriguez Figuerola', '1A','2');
+edificio1.agregarPropietario('Miguel López López','1B','1');
+console.log(edificio1);
+console.log(edificio1.imprimirTodosPropietarios());
 
-let edificio2=JSON.parse(edificio1);
-console.log(edificio2);
+edificio1.modificarTipoVia('avenida');
+edificio1.modificarNombreVia('Marques de la Fontsanta');
+edificio1.modificarNumeroEdificio('60A');
+edificio1.modificarCodigoPostal('007005');
 
-function arreglarMap(obj){
-
-let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, obj.codigoPostal);
-
-    for (let planta in obj.mapaPropietariosEdificio) {
-    nuevoEdificio.agregarPlanta(planta);
-
-        for (let puerta in obj.mapaPropietariosEdificio[planta]) {
-        nuevoEdificio.agregarPuerta(planta, puerta);
-
-            for (let propietario in obj.mapaPropietariosEdificio[planta][puerta]) {
-            nuevoEdificio.agregarPropietario(obj.mapaPropietariosEdificio[planta][puerta][propietario], planta, puerta);  
-            }
-        }
-    }
-    return nuevoEdificio;
-}
-
-edificioArreglado=arreglarMap(edificio2);
-console.log(edificioArreglado.imprimirTodosPropietarios());
+console.log(edificio1.imprimirTipoVia());
+console.log(edificio1.imprimirNombreVia());
+console.log(edificio1.imprimirNumeroEdificio());
+console.log(edificio1.imprimirCodigoPostal());

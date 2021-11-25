@@ -95,13 +95,17 @@ let edificio1 = `{
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://www.delftstack.com/es/howto/javascript/loop-through-object-javascript/
 
+//Tranforma el edificio1 de JSON a objeto
 let edificio2=JSON.parse(edificio1);
 console.log(edificio2);
 
-function arreglarMap(obj){
+//Funcion para transformar un objeto a la clase edificio
+function transformaObjeto(obj){
 
+//Se crea el nuevo Edificio
 let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, obj.codigoPostal);
 
+    //bucles para recorrer los atributos de mapaPropietarios y agregarlos a nuevoEdificio
     for (let planta in obj.mapaPropietariosEdificio) {
     nuevoEdificio.agregarPlanta(planta);
 
@@ -116,5 +120,5 @@ let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, o
     return nuevoEdificio;
 }
 
-edificioArreglado=arreglarMap(edificio2);
+edificioArreglado=transformaObjeto(edificio2);
 console.log(edificioArreglado.imprimirTodosPropietarios());
