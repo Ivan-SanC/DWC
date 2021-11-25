@@ -44,11 +44,8 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
 
         //Imprimir
     this.imprimirTipoVia=()=>this.tipoVia;
-
     this.imprimirNombreVia=()=>this.nombreVia;
-
     this.imprimirNumeroEdificio=()=>this.numeroEdificio;
-    
     this.imprimirCodigoPostal=()=>this.codigoPostal;
     
     this.imprimirTodosPropietarios=function(){
@@ -141,8 +138,10 @@ document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipo
 ${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);*/
 
 //Ejecucion HTML
-    //Texto
+    
+//Texto
 document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
 ${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioArreglado.imprimirTodosPropietarios()}`);
-    //Fondo
+    
+//Fondo
 randomColor();    
