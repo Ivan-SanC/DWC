@@ -129,18 +129,6 @@ function randomColor(){
 document.body.style.background = bgColor;
 }
 
-/*
-//Ejecucion HTML  
-//Texto
-document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
-${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioArreglado.imprimirTodosPropietarios()}`);
-    
-//Fondo
-randomColor();   */ 
-
-
-
-
 
 //modificar imprimirTodsPropietarios() sin modificar sun valores en el constructor
 //con .replace cambio los \t y \n por sus respectivos en html
@@ -148,8 +136,9 @@ let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbs
 let saltos=tabulacion.replace(/\n/g,"<br>");
 //.split me divide el string
 let edificioArray=saltos.split("<br>");
-
 console.log(edificioArray);
+
+
 for(let i=0;i<edificioArray.length;i++){
     console.log('1'+edificioArray[i]);
 if(edificioArray[i].includes("Planta")){
@@ -166,6 +155,8 @@ let edificioHtml=edificioArray.join(" ");
 console.log(edificioHtml);
 document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
 ${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);
+//Fondo
+randomColor();
 
 //Enlaces
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/replace

@@ -50,15 +50,14 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
         
     this.imprimirTodosPropietarios=function(){
         let string="";
-
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
-            string += `<h2>Planta: ${plantas}</strong></h2>`;
-    
+            string += `Planta: ${plantas} \n`;
+
             for(let[puerta,propietarios]of puertas){
-                string +=`<h3>&nbsp;&nbsp;&nbsp;Puerta: ${puerta}</h3>`;
-                            
+                string +=`\t Puerta: ${puerta} \n`;
+                        
                 for(let i=0;i<propietarios.length;i++){
-                    string+=  `<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${propietarios[i]}</p>`;
+                    string+=  `\t\t ${propietarios[i]} \n`;
                 }
             }
         }
@@ -159,13 +158,20 @@ do{
 
                         if(cancelar==false){
                             //agrega planta
+                            plantaRepetida=false;
+                            for (let [edfPlantas,edfPuertas] of edificio1.mapaPropiertariosEdificio) {
+                                if(planta==edfPlantas){
+                                    plantaRepetida=true;
+                                }
+                            }
+                            if(plantaRepetida==false){
                             edificio1.agregarPlanta(planta);
-                        
+                            }
+
                             do{
                                 //reinicia el valor
                                 puertaRepetida=false;
-                                plantaRepetida=false;
-
+                    
                                 puerta=prompt("Introduce la puerta: ");
                                 if(puerta==null){
                                 cancelar=true;
@@ -176,11 +182,8 @@ do{
                                 //Si la planta existe no pasa nada, pero si es una puerta repetida avisa.
                                 if(continuar==true){
                                     for (let [edfPlantas,edfPuertas] of edificio1.mapaPropiertariosEdificio) {
-                                        if(planta==edfPlantas){
-                                            plantaRepetida=true;
-                                        }
                                         for(let[edfPuerta,edfPropietarios]of edfPuertas){
-                                            if(puerta==edfPuerta){
+                                            if(puerta==edfPuerta&&planta==edfPlantas){
                                             alert("Puerta Repetida");
                                             puertaRepetida=true;
                                             }
@@ -203,20 +206,21 @@ do{
 
                                      //Verifica que se introduce un nombre y puede o no tener apellido y minimo 3 letras max 40.   
                                     }while(!expPropietario.test(propietario)&&cancelar==false);
-                                    
+                                     
                                     //Si queremos introducir un nuevo propietario a la misma puerta
                                     //se ejecutara este if y lo añadira
-                                    if(confirmar==true&&cancelar==false){
-                                    edificio1.agregarPropietario(propietario,planta,puerta);
-                                    }
+                                    //if(confirmar==true&&cancelar==false){
+                                    
+                                    //}
 
                                         //si se introducido un propietario correcto se entrara aqui
                                         if(cancelar==false){
-                                        
+                                            edificio1.agregarPropietario(propietario,planta,puerta);
+                                            cont++;
                                         //si es la primera vez que se introducen los datos entra aqui y crea el objeto
                                         //cuando se crea el edifico el contador sera 1 y no vuelve a entrar aqui
                                         //y por lo tanto existe ya el edificio
-                                        if(cont==0){
+                                        /*if(cont==0){
                                             //var edificio1=new Edificio(tipoVia,nombreVia,numEdf,cp);
                                             edificio1.agregarPlanta(planta);
                                             edificio1.agregarPuerta(planta,puerta);
@@ -236,7 +240,7 @@ do{
                                             edificio1.agregarPuerta(planta,puerta);
                                             edificio1.agregarPropietario(propietario,planta,puerta);
 
-                                        }
+                                        }*/
 
                                             //te pregunta si quieres añadir un dueño mas a esa misma puerta
                                             confirmar=confirm("¿Quieres introducir otro propietario?");
@@ -286,10 +290,30 @@ document.body.style.background = bgColor;
 //imprime datos y cambia fondo a color random
 if(existe==true){
 
-    document.write(`<h1>Comunidad de propietarios<br>${edificio1.imprimirTipoVia()} ${edificio1.imprimirNombreVia()},
-${edificio1.imprimirNumeroEdificio()} C.P ${edificio1.imprimirCodigoPostal()}</h1>${edificio1.imprimirTodosPropietarios()}`);
-    
-randomColor(); 
+let tabulacion=edificio1.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
+let saltos=tabulacion.replace(/\n/g,"<br>");
+let edificioArray=saltos.split("<br>");
+
+    for(let i=0;i<edificioArray.length;i++){
+        if(edificioArray[i].includes("Planta")){
+            edificioArray[i]=`<h2>${edificioArray[i]}</h2>`;
+
+        }else if(edificioArray[i].includes("Puerta")){
+            edificioArray[i]=`<h3>${edificioArray[i]}</h3>`;
+
+        }else{
+            edificioArray[i]=`<p>${edificioArray[i]}</p>`;
+        }
+    }
+
+    let edificioHtml=edificioArray.join(" ");
+
+
+    document.write(`<h1>Comunitat de propietaris<br>${edificio1.imprimirTipoVia()} ${edificio1.imprimirNombreVia()},
+    ${edificio1.imprimirNumeroEdificio()} C.P ${edificio1.imprimirCodigoPostal()}</h1>${edificioHtml}`);
+    //Fondo
+    randomColor();
+
 }else{
     alert("Se ha cancelado la introducción de datos.")
 }
