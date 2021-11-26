@@ -98,11 +98,10 @@ let expPropietario= new RegExp('^[a-zA-ZÀ-ÿ\\u00f1\\u00d1](\\s*[a-zA-ZÀ-ÿ\\u
 //sale de la aplicacion y no guarda los datos, para que se guarde un dato debes llegar a introducir un propietario al menos.
 
 do{
-    //contador para introducir los datos la primera vez que se crea el objeto
+    //contador para verificar que se ha introducido un dato nuevo
     let cont=0;
 
 
-    //preguntar que datos no se deben repetir
     tipoVia=prompt("Introduce el tipo de vía:");
     if(tipoVia==null||tipoVia==""){
         cancelar=true;
@@ -123,7 +122,7 @@ do{
            
             }else{
             
-                //Si no son 5 numeros te pedirá el codigo otra vez.
+                
                 do{
 
                 cp=prompt("Introduce el código postal: ");
@@ -134,9 +133,11 @@ do{
                     if(!expCp.test(cp)&&cancelar==false){
                         alert(cp+" No es un codigo postal");
                     }
-
+                
+                    //Si no son 5 numeros te pedirá el codigo otra vez.
                 }while(!expCp.test(cp)&&cancelar==false);
                 
+
                 if(cancelar==false){
                     
                     //se crea el edificio
@@ -147,25 +148,39 @@ do{
                     do{
                         
 
-                        //repetir hasta cancelar o que se escriba algo
+                        
                         do{
                             planta=prompt("Introduce la planta: ");
                    
                             if(planta==null){
                             cancelar=true;
                             }
+
+                            //Se repite hasta cancelar o que se escriba algo
                         }while(planta==""&&cancelar==false);
 
                         if(cancelar==false){
-                            //agrega planta
+                            
+                            //reinicio el valor
                             plantaRepetida=false;
+                            
+                            //Comprueba que la puerta ya exista
                             for (let [edfPlantas,edfPuertas] of edificio1.mapaPropiertariosEdificio) {
                                 if(planta==edfPlantas){
                                     plantaRepetida=true;
                                 }
                             }
+                            //si la puerta no existe la añade
                             if(plantaRepetida==false){
                             edificio1.agregarPlanta(planta);
+                            cont++;
+                            if(cont!=0){
+                                alert("Se ha introducido un dato nuevo.");
+                               }
+
+
+                            }else{
+                                alert("Planta ya existente.")
                             }
 
                             do{
@@ -191,11 +206,17 @@ do{
                                     }
                                 }
                                 
-                            //Controla que la puetar no tenga un "-" seguido de un numero , si no se a escrito nada o si se repite la puerta
+                            //Controla que la puetar no tenga un "-" seguido de un numero, y si no se a escrito nada o si se repite la puerta
                             }while((expPuerta.test(puerta)&&cancelar==false)||(puerta==""&&cancelar==false)||(cancelar==false&&puertaRepetida==true));
+                            
                             if(cancelar==false){
+                                
                                 //agrega puerta
                                 edificio1.agregarPuerta(planta,puerta);
+                                cont++;
+                                if(cont!=0){
+                                    alert("Se ha introducido un dato nuevo.");
+                                   }
                                  
                                 do{ 
                                     do{
@@ -206,49 +227,20 @@ do{
 
                                      //Verifica que se introduce un nombre y puede o no tener apellido y minimo 3 letras max 40.   
                                     }while(!expPropietario.test(propietario)&&cancelar==false);
-                                     
-                                    //Si queremos introducir un nuevo propietario a la misma puerta
-                                    //se ejecutara este if y lo añadira
-                                    //if(confirmar==true&&cancelar==false){
-                                    
-                                    //}
+   
 
-                                        //si se introducido un propietario correcto se entrara aqui
+                                        //si se ha introducido un propietario correcto se entrara aqui
                                         if(cancelar==false){
                                             edificio1.agregarPropietario(propietario,planta,puerta);
+                                            //este contador es el que me me dira si se ha introducido un dato nuevo o no
                                             cont++;
-                                        //si es la primera vez que se introducen los datos entra aqui y crea el objeto
-                                        //cuando se crea el edifico el contador sera 1 y no vuelve a entrar aqui
-                                        //y por lo tanto existe ya el edificio
-                                        /*if(cont==0){
-                                            //var edificio1=new Edificio(tipoVia,nombreVia,numEdf,cp);
-                                            edificio1.agregarPlanta(planta);
-                                            edificio1.agregarPuerta(planta,puerta);
-                                            edificio1.agregarPropietario(propietario,planta,puerta);
-                                            cont++;
-                                            
-                                          
-                                            //este else se ejecuta cuando ya se ha creado una mapeado de propietarios por primera vez
-                                        }else if(cont>0&&confirmar==false){
-                                            
-                                            //si la planta no es repetida se añadira
-                                            if(plantaRepetida==false){
-                                                edificio1.agregarPlanta(planta);
-                                            }
-
-                                            //añade la puerta y el propietario
-                                            edificio1.agregarPuerta(planta,puerta);
-                                            edificio1.agregarPropietario(propietario,planta,puerta);
-
-                                        }*/
 
                                             //te pregunta si quieres añadir un dueño mas a esa misma puerta
-                                            confirmar=confirm("¿Quieres introducir otro propietario?");
+                                            confirmar=confirm(`¿Quieres introducir otro propietario a la puerta ${puerta}?`);
                                         if (confirmar==false){
                                             cancelar=true;
                                         }
                                     }
-                                
                                 
                                 }while(cancelar==false);
                                 
