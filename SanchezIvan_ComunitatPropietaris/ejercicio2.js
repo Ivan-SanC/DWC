@@ -52,7 +52,7 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     this.imprimirTodosPropietarios=function(){
         let string="";
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
-            string += ` Planta: ${plantas} \n`;
+            string += `Planta: ${plantas} \n`;
 
                     for(let[puerta,propietarios]of puertas){
                         string +=`\t Puerta: ${puerta} \n`;
@@ -147,17 +147,13 @@ randomColor();   */
 let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
 let saltos=tabulacion.replace(/\n/g,"<br>");
 let edificioHtml=saltos.split("<br>");
-console.log(edificioHtml);
 
-//indexOf
-//lastindexof
 console.log(edificioHtml);
-for(let i;i<edificioHtml.length;i++){
+for(let i=0;i<edificioHtml.length;i++){
     console.log('1'+edificioHtml[i]);
 if(edificioHtml[i].includes("Planta")){
     edificioHtml[i]=`<h2>${edificioHtml[i]}</h2>`;
-}
-if(edificioHtml[i].includes("Puerta")){
+}else if(edificioHtml[i].includes("Puerta")){
     edificioHtml[i]=`<h3>${edificioHtml[i]}</h3>`;
 }else{
     edificioHtml[i]=`<p>${edificioHtml[i]}</p>`
