@@ -68,6 +68,9 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
         }
     
 }
+
+//Comprobaciones 
+
 const edificio1 = new Edificio('calle', 'marques rubio', 70, '07005');
 
 edificio1.agregarPlanta('1A');

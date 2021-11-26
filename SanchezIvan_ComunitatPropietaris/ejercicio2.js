@@ -48,10 +48,11 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     this.imprimirNumeroEdificio=()=>this.numeroEdificio;
     this.imprimirCodigoPostal=()=>this.codigoPostal;
     
+    //Modifico este metodo para que el codigo cuando se ejecute en la web sea el resultado que se quiere
     this.imprimirTodosPropietarios=function(){
         let string="";
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
-            string += `<h2>Planta: ${plantas}</strong></h2>`;
+            string += `<h2>Planta: ${plantas}</h2>`;
 
                     for(let[puerta,propietarios]of puertas){
                         string +=`<h3>&nbsp;&nbsp;&nbsp;Puerta: ${puerta}</h3>`;
@@ -68,7 +69,6 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
 
 
 //Ejercicio 2 JSON
-//https://programmerclick.com/article/151521994/
 let edificio1 = `{
     "tipoVia":"Calle",
     "nombreVia":"García Prieto",
@@ -88,21 +88,19 @@ let edificio1 = `{
     }
 }`;
 
-//https://github.com/blnlaserna/20211111-16_Teoria/blob/main/6_RecorrerPropiedadesObjeto.js
-//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
-//https://www.delftstack.com/es/howto/javascript/loop-through-object-javascript/
 
-//Tranforma el edificio1 de JSON a objeto
+
+//Tranforma el edificio1 de JSON a objeto y no es una referencia
 let edificio2=JSON.parse(edificio1);
 console.log(edificio2);
 
-//Funcion para transformar edificio2 a objeto de Edificio
+//Funcion para transformar edificio2 a objeto de tipo Edificio
 function transformaObjeto(obj){
 
-//Se crea el nuevo Edificio
+//Se crea nuevoEdificio con los datos del objeto
 let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, obj.codigoPostal);
 
-    //bucles para recorrer los atributos de mapaPropietarios y agregarlos a nuevoEdificio
+    //bucles para recorrer mapaPropietarios y agregar sus propiedades a nuevoEdificio y que estos sean un map
     for (let planta in obj.mapaPropietariosEdificio) {
     nuevoEdificio.agregarPlanta(planta);
 
@@ -117,6 +115,7 @@ let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, o
     return nuevoEdificio;
 }
 
+//Creo el edificio que va a tener los datos del JSON y va a ser un objeto de la clase Edificio
 let edificioArreglado=transformaObjeto(edificio2);
 
 //Fondo aleatorio
@@ -130,6 +129,19 @@ function randomColor(){
 document.body.style.background = bgColor;
 }
 
+//Ejecucion HTML  
+//Texto
+document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
+${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioArreglado.imprimirTodosPropietarios()}`);
+    
+//Fondo
+randomColor();    
+
+
+
+
+
+//Otra opcion de modificar imprimirTodsPropietarios() sin modificar sun valores en el constructor
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 /*let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
 let saltos=tabulacion.replace(/\n/g,"<br>");
@@ -137,11 +149,8 @@ let edificioHtml=saltos;
 document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
 ${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);*/
 
-//Ejecucion HTML
-    
-//Texto
-document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
-${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioArreglado.imprimirTodosPropietarios()}`);
-    
-//Fondo
-randomColor();    
+//Enlaces
+//https://programmerclick.com/article/151521994/
+//https://github.com/blnlaserna/20211111-16_Teoria/blob/main/6_RecorrerPropiedadesObjeto.js
+//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
+//https://www.delftstack.com/es/howto/javascript/loop-through-object-javascript/
