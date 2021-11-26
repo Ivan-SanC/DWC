@@ -139,13 +139,16 @@ do{
                 }while(!expCp.test(cp)&&cancelar==false);
                 
                 if(cancelar==false){
+                    
+                    //se crea el edificio
+                    var edificio1=new Edificio(tipoVia,nombreVia,numEdf,cp);
+                    existe=true;
                    
                     //do-while para volver a introducir datos nuevo en el edificio
                     do{
                         
 
                         //repetir hasta cancelar o que se escriba algo
-                        //negativo?
                         do{
                             planta=prompt("Introduce la planta: ");
                    
@@ -155,7 +158,8 @@ do{
                         }while(planta==""&&cancelar==false);
 
                         if(cancelar==false){
-                        
+                            //agrega planta
+                            edificio1.agregarPlanta(planta);
                         
                             do{
                                 //reinicia el valor
@@ -187,7 +191,8 @@ do{
                             //Controla que la puetar no tenga un "-" seguido de un numero , si no se a escrito nada o si se repite la puerta
                             }while((expPuerta.test(puerta)&&cancelar==false)||(puerta==""&&cancelar==false)||(cancelar==false&&puertaRepetida==true));
                             if(cancelar==false){
-                            
+                                //agrega puerta
+                                edificio1.agregarPuerta(planta,puerta);
                                  
                                 do{ 
                                     do{
@@ -212,12 +217,12 @@ do{
                                         //cuando se crea el edifico el contador sera 1 y no vuelve a entrar aqui
                                         //y por lo tanto existe ya el edificio
                                         if(cont==0){
-                                            var edificio1=new Edificio(tipoVia,nombreVia,numEdf,cp);
+                                            //var edificio1=new Edificio(tipoVia,nombreVia,numEdf,cp);
                                             edificio1.agregarPlanta(planta);
                                             edificio1.agregarPuerta(planta,puerta);
                                             edificio1.agregarPropietario(propietario,planta,puerta);
                                             cont++;
-                                            existe=true;
+                                            
                                           
                                             //este else se ejecuta cuando ya se ha creado una mapeado de propietarios por primera vez
                                         }else if(cont>0&&confirmar==false){

@@ -48,17 +48,17 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     this.imprimirNumeroEdificio=()=>this.numeroEdificio;
     this.imprimirCodigoPostal=()=>this.codigoPostal;
     
-    //Modifico este metodo para que el codigo cuando se ejecute en la web sea el resultado que se quiere
+    
     this.imprimirTodosPropietarios=function(){
         let string="";
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
-            string += `<h2>Planta: ${plantas}</h2>`;
+            string += ` Planta: ${plantas} \n`;
 
                     for(let[puerta,propietarios]of puertas){
-                        string +=`<h3>&nbsp;&nbsp;&nbsp;Puerta: ${puerta}</h3>`;
+                        string +=`\t Puerta: ${puerta} \n`;
                         
                         for(let i=0;i<propietarios.length;i++){
-                          string+=  `<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${propietarios[i]}</p>`;
+                          string+=  `\t\t ${propietarios[i]} \n`;
                         }
                     }
             }
@@ -129,27 +129,47 @@ function randomColor(){
 document.body.style.background = bgColor;
 }
 
+/*
 //Ejecucion HTML  
 //Texto
 document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
 ${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioArreglado.imprimirTodosPropietarios()}`);
     
 //Fondo
-randomColor();    
+randomColor();   */ 
 
 
 
 
 
-//Otra opcion de modificar imprimirTodsPropietarios() sin modificar sun valores en el constructor
-//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/replace
-/*let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
+//modificar imprimirTodsPropietarios() sin modificar sun valores en el constructor
+
+let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
 let saltos=tabulacion.replace(/\n/g,"<br>");
-let edificioHtml=saltos;
+let edificioHtml=saltos.split("<br>");
+console.log(edificioHtml);
+
+//indexOf
+//lastindexof
+console.log(edificioHtml);
+for(let i;i<edificioHtml.length;i++){
+    console.log('1'+edificioHtml[i]);
+if(edificioHtml[i].includes("Planta")){
+    edificioHtml[i]=`<h2>${edificioHtml[i]}</h2>`;
+}
+if(edificioHtml[i].includes("Puerta")){
+    edificioHtml[i]=`<h3>${edificioHtml[i]}</h3>`;
+}else{
+    edificioHtml[i]=`<p>${edificioHtml[i]}</p>`
+}
+}
+console.log(edificioHtml);
+
 document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
-${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);*/
+${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);
 
 //Enlaces
+//https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 //https://programmerclick.com/article/151521994/
 //https://github.com/blnlaserna/20211111-16_Teoria/blob/main/6_RecorrerPropiedadesObjeto.js
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
