@@ -143,24 +143,27 @@ randomColor();   */
 
 
 //modificar imprimirTodsPropietarios() sin modificar sun valores en el constructor
-
+//con .replace cambio los \t y \n por sus respectivos en html
 let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
 let saltos=tabulacion.replace(/\n/g,"<br>");
-let edificioHtml=saltos.split("<br>");
+//.split me divide el string
+let edificioArray=saltos.split("<br>");
 
-console.log(edificioHtml);
-for(let i=0;i<edificioHtml.length;i++){
-    console.log('1'+edificioHtml[i]);
-if(edificioHtml[i].includes("Planta")){
-    edificioHtml[i]=`<h2>${edificioHtml[i]}</h2>`;
-}else if(edificioHtml[i].includes("Puerta")){
-    edificioHtml[i]=`<h3>${edificioHtml[i]}</h3>`;
+console.log(edificioArray);
+for(let i=0;i<edificioArray.length;i++){
+    console.log('1'+edificioArray[i]);
+if(edificioArray[i].includes("Planta")){
+    edificioArray[i]=`<h2>${edificioArray[i]}</h2>`;
+}else if(edificioArray[i].includes("Puerta")){
+    edificioArray[i]=`<h3>${edificioArray[i]}</h3>`;
 }else{
-    edificioHtml[i]=`<p>${edificioHtml[i]}</p>`
+    edificioArray[i]=`<p>${edificioArray[i]}</p>`
 }
 }
-console.log(edificioHtml);
+console.log(edificioArray);
+let edificioHtml=edificioArray.join(" ");
 
+console.log(edificioHtml);
 document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
 ${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);
 
