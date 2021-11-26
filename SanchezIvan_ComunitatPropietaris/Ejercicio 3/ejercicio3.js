@@ -290,6 +290,7 @@ document.body.style.background = bgColor;
 //imprime datos y cambia fondo a color random
 if(existe==true){
 
+    //modifica el imprimirTodosPropietarios() sin alterar su prototype
 let tabulacion=edificio1.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
 let saltos=tabulacion.replace(/\n/g,"<br>");
 let edificioArray=saltos.split("<br>");
@@ -316,4 +317,5 @@ let edificioArray=saltos.split("<br>");
 
 }else{
     alert("Se ha cancelado la introducción de datos.")
+    document.write("<h1>No se han guardado datos.</h1>")
 }

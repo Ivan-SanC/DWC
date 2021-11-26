@@ -53,24 +53,27 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     
     this.imprimirTodosPropietarios=function(){
         let string="";
+        
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
+           
             string += ` Planta: ${plantas} \n`;
 
-                    for(let[puerta,propietarios]of puertas){
-                        string +=`\t Puerta: ${puerta} \n`;
+            for(let[puerta,propietarios]of puertas){
+                string +=`\t Puerta: ${puerta} \n`;
                         
-                        for(let i=0;i<propietarios.length;i++){
-                          string+=  `\t\t ${propietarios[i]} \n`;
-                        }
-                    }
+                for(let i=0;i<propietarios.length;i++){
+                    string+=  `\t\t ${propietarios[i]} \n`;
+                }
             }
-            return string;
         }
+        return string;
+    }
     
 }
 
 //Comprobaciones 
 
+//modificado para que la salida sea como la de pruebas.js
 const edificio1 = new Edificio('calle', 'marques rubio', 70, '07005');
 
 edificio1.agregarPlanta('1A');

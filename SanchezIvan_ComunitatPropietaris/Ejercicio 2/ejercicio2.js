@@ -52,15 +52,15 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
     this.imprimirTodosPropietarios=function(){
         let string="";
         for (let [plantas,puertas] of this.mapaPropiertariosEdificio) {
-            string += `Planta: ${plantas} \n`;
+                string += `Planta: ${plantas} \n`;
 
-                    for(let[puerta,propietarios]of puertas){
-                        string +=`\t Puerta: ${puerta} \n`;
+                for(let[puerta,propietarios]of puertas){
+                    string +=`\t Puerta: ${puerta} \n`;
                         
-                        for(let i=0;i<propietarios.length;i++){
-                          string+=  `\t\t ${propietarios[i]} \n`;
-                        }
+                    for(let i=0;i<propietarios.length;i++){
+                      string+=  `\t\t ${propietarios[i]} \n`;
                     }
+                }
             }
             return string;
         }
@@ -69,6 +69,7 @@ function Edificio(tipoVia, nombreVia, numeroEdificio, codigoPostal){
 
 
 //Ejercicio 2 JSON
+
 let edificio1 = `{
     "tipoVia":"Calle",
     "nombreVia":"García Prieto",
@@ -118,41 +119,50 @@ let nuevoEdificio=new Edificio(obj.tipoVia, obj.nombreVia, obj.numeroEdificio, o
 //Creo el edificio que va a tener los datos del JSON y va a ser un objeto de la clase Edificio
 let edificioArreglado=transformaObjeto(edificio2);
 
-//Fondo aleatorio
+
+//Funcion fondo aleatorio
 function randomColor(){
     var x = parseInt(Math.random() * 256);
     var y = parseInt(Math.random() * 256);
     var z = parseInt(Math.random() * 256);
     var bgColor = "rgb(" + x + "," + y + "," + z + ")";
 
-//Ejecucion
 document.body.style.background = bgColor;
 }
 
 
-//modificar imprimirTodsPropietarios() sin modificar sun valores en el constructor
+//modificar imprimirTodsPropietarios() sin modificar sus valores en el constructor
 //con .replace cambio los \t y \n por sus respectivos en html
 let tabulacion=edificioArreglado.imprimirTodosPropietarios().replace(/\t/g,"&nbsp;&nbsp;&nbsp;");
 let saltos=tabulacion.replace(/\n/g,"<br>");
 //.split me divide el string
 let edificioArray=saltos.split("<br>");
-console.log(edificioArray);
 
 
+
+//Bucle para añadir los <h2>, <h3> y <p> al array creado con split
 for(let i=0;i<edificioArray.length;i++){
-    console.log('1'+edificioArray[i]);
-if(edificioArray[i].includes("Planta")){
+
+    if(edificioArray[i].includes("Planta")){
+
     edificioArray[i]=`<h2>${edificioArray[i]}</h2>`;
-}else if(edificioArray[i].includes("Puerta")){
+
+    }else if(edificioArray[i].includes("Puerta")){
+
     edificioArray[i]=`<h3>${edificioArray[i]}</h3>`;
-}else{
+    
+    }else{
     edificioArray[i]=`<p>${edificioArray[i]}</p>`
+    
+    }
 }
-}
-console.log(edificioArray);
+
+
+//Vuelvo a transformar el array a string
 let edificioHtml=edificioArray.join(" ");
 
-console.log(edificioHtml);
+//Meto los datos en el document write para que se vea en el navegador
+
 document.write(`<h1>Comunitat de propietaris<br>${edificioArreglado.imprimirTipoVia()} ${edificioArreglado.imprimirNombreVia()},
 ${edificioArreglado.imprimirNumeroEdificio()} C.P ${edificioArreglado.imprimirCodigoPostal()}</h1>${edificioHtml}`);
 //Fondo
@@ -161,6 +171,7 @@ randomColor();
 //Enlaces
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 //https://programmerclick.com/article/151521994/
+//https://github.com/blnlaserna/20211018-19_Teoria
 //https://github.com/blnlaserna/20211111-16_Teoria/blob/main/6_RecorrerPropiedadesObjeto.js
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://www.delftstack.com/es/howto/javascript/loop-through-object-javascript/
