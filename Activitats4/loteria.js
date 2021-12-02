@@ -2,7 +2,7 @@
 const combinacion = new Set();
 
 for (i=1;i<=50;i++) {
-    document.write(`<h1>Combinación ${i}:</h1>`)
+    document.write(`<h3>Combinación ${i}:</h3>`)
 
     do {
         combinacion.add(parseInt(Math.random()*49) + 1);

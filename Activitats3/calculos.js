@@ -25,8 +25,8 @@ function devuelveDatos(){
         }
     }else if(sueldo<1000){
         if(edad<30){
-       var sueldo2=1100;
-        document.write("Nombre: "+ nom+"</br>Apellidos: "+ apellido1+" &nbsp"+apellido2+"</br>Edad: "+edad+" </br>Sueldo: "+sueldo2);
+       var sueldo=1100;
+        document.write("Nombre: "+ nom+"</br>Apellidos: "+ apellido1+" &nbsp"+apellido2+"</br>Edad: "+edad+" </br>Sueldo: "+sueldo);
         }else if(edad>=30 && edad<=45){
         document.write("Nombre: "+ nom+"</br>Apellidos: "+ apellido1+" &nbsp"+apellido2+"</br>Edad: "+edad+" </br>Sueldo: "+sueldo*1.03);    
         }else{

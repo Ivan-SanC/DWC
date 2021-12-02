@@ -15,7 +15,6 @@ for(i=0;i<text.length;i++){
     for(j=0;j<=i;j++){
         textXifrat=text.charCodeAt(i)+Number(clau.charAt(j));
 
-        
     }
     document.write(String.fromCharCode(textXifrat));
 

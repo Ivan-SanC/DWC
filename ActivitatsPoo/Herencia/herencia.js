@@ -4,6 +4,7 @@ function Ordenador(marca,modelo,ram=4,disco=512,pulgadas=17){
     this.ram=ram;
     this.disco=disco;
     this.pulgadas=pulgadas;
+
     this.toString= function(){
         return `
         Marca: ${this.marca}
@@ -17,6 +18,7 @@ function Ordenador(marca,modelo,ram=4,disco=512,pulgadas=17){
 function Portatil(marca,modelo,ram=4,disco=256,pulgadas=13,autonomia=4){
     this.__proto__=new Ordenador( marca,modelo,ram,disco,pulgadas);
     this.autonomia=autonomia;
+    
     this.toString=function(){
         return this.__proto__.toString()+`\n\t\tAutonomia: ${this.autonomia} horas`;
     }

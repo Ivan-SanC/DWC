@@ -1,0 +1,26 @@
+Las características de la POO son:
+    - Abstracción. Propiedad que permite reutilizar un objeto
+        sin conocer su funcionamiento interno, bastará con que nos 
+        proporcione su interfaz externa.
+        La interfaz son las propiedades y métodos que permiten
+        manipular y utilizar el objeto.
+    - Encapsulamiento. Capacidad de que los objetos puedan ocultar 
+        algunos métodos y propiedades de modo que, podamos elegir 
+        solo los que nos interesan que queden visibles.
+    - Polimorfismo. Permite conseguir que diferentes tipos de objetos
+        puedan tener métodos con el mismo nombre, pero que actúen 
+        de forma diferente. 
+    - Herencia. Los diferentes tipos de objetos se suelen relacionar
+        con clases de objetos. Se definen clases y se crean objetos 
+        de dichas clases. La herencia permite que haya clases que 
+        hereden las características de otras clases.
+
+Hay debate sobre si JS es un lenguaje orientado a objetos. Hay otros
+lenguajes que implementan el paradigma de la POO de forma más 
+completa.
+La gran diferencia se encuentar en cómo maneja JS las clases y las
+herencias. Es posible programar objetos sin utilizar clase en JS.
+Utiliza una orientación basada en prototipos. Ese mecanismo permite
+heredar características entre objetos gracias a considerar que cada 
+objeto tiene un prototipo asociado que podemos modificar en cualquier
+momento para añadirle nuevas propiedades y métodos.

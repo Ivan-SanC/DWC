@@ -1,0 +1,19 @@
+POO se refiere a Programación Orientada a Objetos.
+La POO es un modelo de programación.
+Consigue que una aplicación sea un conjunto de objetos que se comunican.
+Cada objeto se programa de forma independiente, consiguiendo una
+modularización mayor que la propia programación modular.
+Los objetos son una estructura que aglutina datos y acciones (funciones).
+
+La idea es que los objetos envían y reciben mensajes entre sí.
+Un objeto será un elemento de la aplicación capaz de recibir mensajes que provocan un procesamiento de dicho mensaje hasta producir un resultado que, a su vez, determinará un envío de mensajes a otro objeto.
+
+El mantenimiento es más sencillo. Sólo hay que preocuparse de hacer que cada objeto funcione debidamente. Una vez un objeto funciona, lo podemos utilizar en todas las aplicaciones que deseemos.
+
+Un objeto es una estructura que aglutina datos y acciones. 
+Los datos son los atributos o propiedades de los objetos.
+Las acciones (que se llaman métodos) es lo que el objeto es capaz de hacer.
+
+En POO los objetos son conocidos como clases.
+Un vez definida una clase se puede utilizar las veces que se desee.
+Programar aplicaciones consistirá en analizar y diseñar los objetos que necesitamos y cómo se han de comportar y comunicar entre sí.

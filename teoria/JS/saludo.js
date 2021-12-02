@@ -1,1 +1,0 @@
-document.write("Hola desde el archivo");
