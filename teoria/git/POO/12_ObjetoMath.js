@@ -5,6 +5,10 @@
 // CONSTANTES DE MATH
 // Permite usar en el código valores de constantes matemáticas.
 
+
+//Math.random() * (max - min) + min; (Decimal)
+//(Math.random() * (max - min)) + min; (Entero)
+//Math.random() * (max+1 - min)) +min entero y incluyendo el max
 // Ejemplo de uso de la constante PI
 function Circulo(r) {
     this.radio = r;
