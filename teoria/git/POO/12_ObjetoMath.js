@@ -20,4 +20,10 @@ console.log(Math.PI);
 
 /* Lista completa de constantes y métodos de Math:
         https://www.w3schools.com/js/js_math.asp
+
+    Math.sqrt(x) returns the square root of x
+    Math.pow(x, y) returns the value of x to the power of y
+    Math.abs(x) returns the absolute (positive) value of x:
+    Math.PI
+
 */
