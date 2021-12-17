@@ -67,3 +67,16 @@ var direccionPaciente;
 const agendaPacientes = new Map();
 var contadorPacientes = 0;
 
+
+for(let[registro,datos]of registroPacientes){
+    contadorPacientes++;
+    numeroRegistroPaciente=registro;
+    nombrePaciente= datos.split(" (")[0];
+    numeroSSPaciente=datos.split(" (")[1].split(") -> ")[0];
+    direccionPaciente=datos.split(" (")[1].split(") -> ")[1];
+
+    agendaPacientes.set(contadorPacientes, new Paciente(numeroRegistroPaciente,nombrePaciente,numeroSSPaciente,direccionPaciente));
+
+}
+
+console.log(agendaPacientes);

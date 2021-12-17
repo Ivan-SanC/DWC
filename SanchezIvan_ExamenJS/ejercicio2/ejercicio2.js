@@ -1,30 +1,4 @@
 function Paciente(numeroRegistro,nombreCompleto,numeroSS,direccion){
-    //variables
-    this.numeroRegistro=numeroRegistro;
-    this.nombreCompleto=nombreCompleto;
-    this.numeroSS=numeroSS;
-    this.direccion=direccion;
-
-
-    //Modificar
-    this.modificarNumeroRegistro=function(nuevoNumeroRegistro){
-        this.numeroRegistro=nuevoNumeroRegistro;
-    }
-    this.modificarNombreCompleto=function(nuevoNombreCompleto){
-        this.nombreCompleto=nuevoNombreCompleto;
-    }
-    this.modificarNumeroSS=function(nuevoNumeroSS){
-        this.numeroSS=nuevoNumeroSS;
-    }
-    this.modificarDireccion=function(nuevaDireccion){
-        this.direccion=nuevaDireccion;
-    }
-
-    //Imprimir
-    this.imprimirNumeroRegistro=()=>this.numeroRegistro;
-    this.imprimirNombreCompleto=()=>this.nombreCompleto;
-    this.imprimirNumeroSS=()=>this.numeroSS;
-    this.imprimirDireccion=()=>this.direccion;
 
     //Comprobar
     this.comprobarPatrones = function (elementoAComprobar, tipoComprobacion) {
@@ -49,6 +23,63 @@ function Paciente(numeroRegistro,nombreCompleto,numeroSS,direccion){
         }
         
         return validar;//Devolver el valor true si se cumple el patrón y false si no se cumple
+    }
+
+    
+    //Modificar
+    this.modificarNumeroRegistro=function(nuevoNumeroRegistro){
+        if(this.comprobarPatrones(nuevoNumeroRegistro,"numeroRegistro")){
+            this.numeroRegistro=numeroRegistro;
+        }
+    }
+
+    this.modificarNombreCompleto=function(nuevoNombreCompleto){
+        if(this.comprobarPatrones(nuevoNombreCompleto,"nombre")){
+            this.nombreCompleto=nombreCompleto;    
+        }
+    }
+
+    this.modificarNumeroSS=function(nuevoNumeroSS){
+        if(this.comprobarPatrones(nuevoNumeroSS,"numeroSS")){
+            this.numeroSS=numeroSS;
+        }
+    }
+
+    this.modificarDireccion=function(nuevaDireccion){
+        if(this.comprobarPatrones(nuevaDireccion,"direccion")){
+            this.direccion=numeroRegistro;
+        }
+    }
+
+    //Imprimir
+    this.imprimirNumeroRegistro=()=>this.numeroRegistro;
+    this.imprimirNombreCompleto=()=>this.nombreCompleto;
+    this.imprimirNumeroSS=()=>this.numeroSS;
+    this.imprimirDireccion=()=>this.direccion;
+
+    //variables
+    if(this.comprobarPatrones(numeroRegistro,"numeroRegistro")){
+        this.numeroRegistro=modificarNumeroRegistro(numeroRegistro);
+    }else{
+        this.numeroRegistro="";
+    }
+    
+    if(this.comprobarPatrones(nombreCompleto,"nombre")){
+        this.nombreCompleto=modificarNumeroSS(nombreCompleto);    
+    }else{
+        this.nombreCompleto="";
+    }
+
+    if(this.comprobarPatrones(numeroSS,"numeroSS")){
+        this.numeroSS=modificarDireccion(numeroSS);
+    }else{
+        this.numeroSS="";
+    }
+
+    if(this.comprobarPatrones(direccion,"direccion")){
+        this.direccion=modificarDireccion(direccion);
+    }else{
+        this.direccion="";
     }
 
 }
