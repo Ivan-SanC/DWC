@@ -29,6 +29,37 @@ comprobarPatrones = function (elementoAComprobar, tipoComprobacion) {
 let elemento;
 let tipo;
 let resultadoCorrecto;
+let tipos= new Map();
+let elementos=new Map();
+tipos.set("numeroRegistro",elementos.set("ACD123",true))
+.set("nombre",elementos.set("Fernández J.",true))
+.set("numeroSS",elementos.set("010125789",true))
+.set("direccion",elementos.set("C/Federico lorca, 50",true));
+
+for(let tipo of tipos.keys()){
+        for(let[clave,valor]of elementos){
+                console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${clave}\n` + 
+        `Resultado correcto: ${valor} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
+console.log (`\n`);
+        }
+}
+
+let datos= new Map();
+datos.set("numeroRegistro",["ACD123",true]).set("nombre",["Fernández J.",true])
+.set("numeroSS",["010125789",true]).set("direccion",["C/Federico lorca, 50",true]);
+
+
+for (let [tipo,valores] of datos) {
+        console.log(`Tipo de comprobacion: ${tipo} - `);
+        for(let i=0; i<valores.length;i++){
+                console.log(`Elemento a comprobar: ${valores[0]}\n` + 
+                `Resultado correcto: ${valores[1]} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
+        console.log (`\n`);
+        }
+         
+    }
+
+
 
 // COMPROBACIÓN numeroRegistro
 tipo="numeroRegistro";
