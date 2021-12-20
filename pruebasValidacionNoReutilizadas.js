@@ -30,6 +30,7 @@ let elemento;
 let tipo;
 let resultadoCorrecto;
 
+//un mapa y un array
 let datos= new Map();
 datos.set("numeroRegistro",["ACD123",true]).set("nombre",["Fernández J.",true])
 .set("numeroSS",["010125789",true]).set("direccion",["C/Federico lorca, 50",true]);
@@ -42,6 +43,7 @@ for (let [tipo,valor] of datos) {
          
 }
 
+//2 mapas
 var comprobacion = [
         ["numeroRegistro", [
                 ["ACD123", true], 
