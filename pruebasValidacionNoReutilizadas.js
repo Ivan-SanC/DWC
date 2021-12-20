@@ -11,9 +11,9 @@
  */
  
 comprobarPatrones = function (elementoAComprobar, tipoComprobacion) {
-    let patronNumeroRegistro = /^[0-9]{0,6}$/;
+    let patronNumeroRegistro =  /^[A-Z]{3}[0-9]{3}$/;
     let patronNombreCompleto = /^[A-ZÁÉÍÓÚÇ][a-záéíóúü]+ [A-ZÁÉÍÓÚÇ]{1,2}\.$/;
-    let patronNumeroSS = /^[0-9]{1,9}$/;
+    let patronNumeroSS = /^[0-9]{9}$/;
     let patronDireccion = /^(C\/|Av\.)[A-ZÁÉÍÓÚÇ][a-záéíóúü]+ ?[a-záéíóúü ]*, [0-9]+$/;
 
     let patrones = new Map([
@@ -29,35 +29,65 @@ comprobarPatrones = function (elementoAComprobar, tipoComprobacion) {
 let elemento;
 let tipo;
 let resultadoCorrecto;
-let tipos= new Map();
-let elementos=new Map();
-tipos.set("numeroRegistro",elementos.set("ACD123",true))
-.set("nombre",elementos.set("Fernández J.",true))
-.set("numeroSS",elementos.set("010125789",true))
-.set("direccion",elementos.set("C/Federico lorca, 50",true));
-
-for(let tipo of tipos.keys()){
-        for(let[clave,valor]of elementos){
-                console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${clave}\n` + 
-        `Resultado correcto: ${valor} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
-console.log (`\n`);
-        }
-}
 
 let datos= new Map();
 datos.set("numeroRegistro",["ACD123",true]).set("nombre",["Fernández J.",true])
 .set("numeroSS",["010125789",true]).set("direccion",["C/Federico lorca, 50",true]);
 
 
-for (let [tipo,valores] of datos) {
-        console.log(`Tipo de comprobacion: ${tipo} - `);
-        for(let i=0; i<valores.length;i++){
-                console.log(`Elemento a comprobar: ${valores[0]}\n` + 
-                `Resultado correcto: ${valores[1]} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
+for (let [tipo,valor] of datos) {
+        console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${valor[0]}\n` + 
+                `Resultado correcto: ${valor[1]} - Resultado obtenido: ${comprobarPatrones(valor[0], tipo)}`);
+        console.log (`\n`);
+         
+}
+
+var comprobacion = [
+        ["numeroRegistro", [
+                ["ACD123", true], 
+                ["AC123", false],
+                ["ACGTHT123", false],
+                ["145265", false],
+                ["ACG124w", false]
+        ]],
+        ["nombre", [
+                ["Fernández J.", true],
+                ["López Ariadna M.", false],
+                ["Castillo JL.", true],
+                ["Castillo JSL.", false],
+                ["López M", false],
+                ["Martinez", false],
+                ["J.", false]
+
+        ]],
+        ["numeroSS", [
+                ["010125789", true],
+                ["a14568892", false],
+                ["A14589789", false],
+                ["0148796", false]
+        ]],
+
+        ["direccion", [
+                ["C/Federico lorca, 50", true],
+                ["Av.Argentina, 123", true],
+                ["C/lorenzo, 3", false],
+                ["Av.Gimenez losantos, 40", true],
+                ["C/Almirante 45", false],
+                ["C/Almirante", false],
+                ["C/45, 45", false]
+        ]]
+];
+
+for(let [tipo,elementos] of comprobacion){
+        for(let[elemento,resultado] of elementos ){
+                console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${elemento}\n` + 
+                `Resultado correcto: ${resultado} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
         console.log (`\n`);
         }
-         
-    }
+
+}
+
+
 
 
 
@@ -188,7 +218,7 @@ console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${elemento}\n
         `Resultado correcto: ${resultadoCorrecto} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
 console.log (`\n`);
 
-elemento="Av.Gimenez Losantos, 40";
+elemento="Av.Gimenez losantos, 40";
 resultadoCorrecto = true;
 console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${elemento}\n` + 
         `Resultado correcto: ${resultadoCorrecto} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
