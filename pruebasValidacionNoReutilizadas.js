@@ -43,7 +43,53 @@ for (let [tipo,valor] of datos) {
          
 }
 
-//2 mapas
+//2 mapas opcion belen
+var comprobacion = new Map([
+        ["numeroRegistro", new Map([
+                ["ACD123", true], 
+                ["AC123", false],
+                ["ACGTHT123", false],
+                ["145265", false],
+                ["ACG124w", false]
+        ])],
+        ["nombre", new Map( [
+                ["Fernández J.", true],
+                ["López Ariadna M.", false],
+                ["Castillo JL.", true],
+                ["Castillo JSL.", false],
+                ["López M", false],
+                ["Martinez", false],
+                ["J.", false]
+
+        ])],
+        ["numeroSS", new Map( [
+                ["010125789", true],
+                ["a14568892", false],
+                ["A14589789", false],
+                ["0148796", false]
+        ])],
+
+        ["direccion", new Map([
+                ["C/Federico lorca, 50", true],
+                ["Av.Argentina, 123", true],
+                ["C/lorenzo, 3", false],
+                ["Av.Gimenez losantos, 40", true],
+                ["C/Almirante 45", false],
+                ["C/Almirante", false],
+                ["C/45, 45", false]
+        ])]
+]);
+
+for(let [tipo,elementos] of comprobacion){
+        for(let[elemento,resultado] of elementos ){
+                console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${elemento}\n` + 
+                `Resultado correcto: ${resultado} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
+        console.log (`\n`);
+        }
+
+}
+
+/*
 var comprobacion = [
         ["numeroRegistro", [
                 ["ACD123", true], 
@@ -80,18 +126,7 @@ var comprobacion = [
         ]]
 ];
 
-for(let [tipo,elementos] of comprobacion){
-        for(let[elemento,resultado] of elementos ){
-                console.log(`Tipo de comprobacion: ${tipo} - Elemento a comprobar: ${elemento}\n` + 
-                `Resultado correcto: ${resultado} - Resultado obtenido: ${comprobarPatrones(elemento, tipo)}`);
-        console.log (`\n`);
-        }
-
-}
-
-
-
-
+*/
 
 // COMPROBACIÓN numeroRegistro
 tipo="numeroRegistro";
