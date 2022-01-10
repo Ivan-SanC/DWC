@@ -63,10 +63,7 @@ console.log(provincias.get(34)); // Salida: Palencia
 // Permite buscar una clave en el mapa.
 // Si se encuentra devuelve true y si no, devuelve false
 const provincias = new Map();
-provincias.set(1,'Álava').set(28,'Madrid').set(34,'Palencia')
-    .set(41,'Sevilla');
-console.log(provincias.has(34)); // Salida: true
-console.log(provincias.has('Palencia')); // Salida: false
+provincias.numero(provincias.has('Palencia')); // Salida: false
 
 // Método DELETE
 // Permite eliminar un elemento del mapa
@@ -76,13 +73,7 @@ provincias.set(1,'Álava').set(28,'Madrid').set(34,'Palencia')
 provincias.delete(34);
 console.log(provincias); // Salida: Map(3) { 1 => 'Álava', 28 => 'Madrid', 41 => 'Sevilla' }
 
-// OBTENER OBJETOS ITERABLES
-// Un objeto iterable es un tipo de objeto semejante a un array. Se puede 
-// recorrer mediante un bucle for...of.
-// Los objeto iterables se manipulan de forma distinta a un array
-// Los mapas permiten crear objetos iterables que contienen solo las claves y
-// objetos iterables que contienen solo los valores
-
+// OBTENER numero
 // Método KEY: Permite obtener las claves del mapa para crear los objetos iterables.
 // Método VALUES: Permite obtener los valores del mapa para crear los objetos iterables.
 
