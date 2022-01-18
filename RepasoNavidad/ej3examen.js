@@ -105,15 +105,42 @@ var contadorPacientes = 0;
 
 let registro = registroPacientes.entries()
 
+/*
+for(let [numPaciente,datos] of registro){
+    contadorPacientes++
+    numeroRegistroPaciente=numPaciente;
+
+    let dato=datos.replace(" (","-");
+    console.log(dato);
+    dato=dato.replace(") -> ","-");
+
+    let datoLimpio=dato.split("-");
+    console.log(datoLimpio);
+    nombrePaciente=datoLimpio[0];
+    console.log(nombrePaciente);
+    numeroSSPaciente=datoLimpio[1];
+    console.log(numeroSSPaciente);
+    direccionPaciente=datoLimpio[2]
+    console.log(direccionPaciente);
+    agendaPacientes.set("Paciente "+contadorPacientes,new Paciente(numeroRegistroPaciente, nombrePaciente, numeroSSPaciente, direccionPaciente));
+    
+}
+console.log(agendaPacientes);
+*/
+
+//OPCION BELEN
+
 for (let [numeroRegistro, datos] of registroPacientes){
     contadorPacientes++;
     numeroRegistroPaciente = numeroRegistro;
     nombrePaciente = datos.split(' (')[0];
+    console.log(nombrePaciente);
     numeroSSPaciente = datos.split('(')[1].split(')')[0];
-    direccionPaciente = datos.split('(')[1].split('-> ')[1];
-
-    agendaPacientes.set(contadorPacientes, new Paciente(numeroRegistroPaciente,
-        nombrePaciente, numeroSSPaciente, direccionPaciente));
+    console.log(numeroSSPaciente);
+    direccionPaciente = datos.split('-> ')[1];
+    console.log(direccionPaciente);
+    //agendaPacientes.set(contadorPacientes, new Paciente(numeroRegistroPaciente,
+      //  nombrePaciente, numeroSSPaciente, direccionPaciente));
 }
 
-console.log(agendaPacientes);
+//console.log(agendaPacientes);
