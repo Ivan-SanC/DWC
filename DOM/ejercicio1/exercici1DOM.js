@@ -12,6 +12,9 @@ let cont=1;
 function obtenerDatos(){
    enlacesTotal=document.getElementsByTagName("a");
    pTotal=document.getElementsByTagName("p");
+   //plastenlace=enlacesTotal[enlacesTotal.length-2].href;
+   //plastenlace=enlacesTotal[enlacesTotal.length-1].href;
+   
    plastenlace=enlacesTotal[enlacesTotal.length-2];
    lastenlance=enlacesTotal[enlacesTotal.length-1];
 
