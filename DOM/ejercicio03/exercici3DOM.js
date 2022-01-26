@@ -5,7 +5,7 @@ let posiciontexto;
 
 //mira que no haya solo espacios en blanco
 function isBlank(cadena) {
-    return (/^\s*$/.test(cadena));
+    return (/^\S*$/.test(cadena));
 }
 
 function obtenerDatos() {
@@ -14,7 +14,7 @@ function obtenerDatos() {
     }while(isBlank(textoNuevo)&&textoNuevo!=null);
 
     do{
-        posiciontexto=prompt("Introduce la posición del nuevo parrafo (1-10)");
+        posiciontexto=parseInt(prompt("Introduce la posición del nuevo parrafo (1-10)"));
         if(isNaN(posiciontexto)){
             alert("Solo numeros!")
         }
