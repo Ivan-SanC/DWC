@@ -15,16 +15,42 @@ function habilitarSelect(identificador){
 
 function retornaValor(elemento){
     console.log(elemento.value);
+    let valor=elemento.value;
     
-    let contenido=document.createTextNode(elemento.value+" ");
-    document.body.appendChild(contenido);
+    if(elemento.type=="checkbox"||elemento.type=="radio"){
+        if(elemento.checked==true){
+            valor;
+            
+        }
+    }else if(elemento.type=="text"||elemento.type=="textearea"){
+            valor;
+        
+
+    }else  if(elemento.type=="select-multiple"){
+        if(elemento.checked==true){
+            for(let a of elemento.options)
+            a.value;
+           
+        }
+    }else if(elemento.type=="select-one"){
+        if(elemento.checked==true){
+            valor;
+            
+        }
+    }
+    
+    return valor;
+    
 }
 
 function validarFormulario(form){
     let formulario=document.getElementById(form);
+    
+    for(let element of formulario.elements){
+        let resultado=retornaValor(element)
+        let contenido=document.createTextNode(resultado+" ");
+        document.body.appendChild(contenido);
 
-    for(element of formulario){
-        retornaValor(element);
     }
     
 }
