@@ -1,12 +1,12 @@
 
 function habilitarSelect(identificador){
-    var getId=document.getElementById(identificador);
+    var selectId=document.getElementById(identificador);
     
-    if(getId.disabled){
-        getId.disabled=false;
+    if(selectId.disabled){
+        selectId.disabled=false;
         
     }else{
-        getId.disabled=true
+        selectId.disabled=true
         
     }  
 }
@@ -18,25 +18,28 @@ function retornaValor(elemento){
     let valor=elemento.value;
     
     if(elemento.type=="checkbox"||elemento.type=="radio"){
-        if(elemento.checked==true){
+        if(elemento.checked){
             valor;
             
         }
     }else if(elemento.type=="text"||elemento.type=="textearea"){
-            valor;
-        
+            valor; 
 
     }else  if(elemento.type=="select-multiple"){
-        if(elemento.checked==true){
-            for(let a of elemento.options)
-            a.value;
-           
+        let arraySelect=new Array();
+        for(let opcion of elemento.options){
+            if(opcion.selected){
+                valor=arraySelect.push(opcion.value);
+            }
         }
+
     }else if(elemento.type=="select-one"){
-        if(elemento.checked==true){
-            valor;
+        let indiceselect=elemento.selectIndex
+        valor=elemento.options[indiceselect].value
             
-        }
+        
+    }else{
+        valor="";
     }
     
     return valor;
@@ -47,7 +50,7 @@ function validarFormulario(form){
     let formulario=document.getElementById(form);
     
     for(let element of formulario.elements){
-        let resultado=retornaValor(element)
+        let resultado=retornaValor(element);
         let contenido=document.createTextNode(resultado+" ");
         document.body.appendChild(contenido);
 
