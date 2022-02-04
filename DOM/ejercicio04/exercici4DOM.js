@@ -1,59 +1,84 @@
+// HABILITAR LOS SELECT CUANDO EL CHECKBOX CORRESPONDIENTE ESTÁ SELECCIONADO
+function habilitarSelect(selectId){
+    let nodoSelect = document.getElementById(selectId);
 
-function habilitarSelect(identificador){
-    var selectId=document.getElementById(identificador);
-    
-    if(selectId.disabled){
-        selectId.disabled=false;
-        
-    }else{
-        selectId.disabled=true
-        
-    }  
-}
+    if (nodoSelect.disabled) {
+        nodoSelect.disabled = false;
+    } else {
+        nodoSelect.disabled = true;
+    }
+};
 
 
+// Mapeo del tipo de elemento con la función que se necesita utilizar para devolver el valor
+const mapeadoTipoElementoFuncion = {
+    'text': 'text',
+    'textarea': 'text',
+    'checkbox': 'check',
+    'radio': 'check',
+    'select-multiple': 'select',
+    'select-one': 'select-one',
+    'select-multiple': 'select-multiple'
+};
 
-function retornaValor(elemento){
-    console.log(elemento.value);
-    let valor=elemento.value;
-    
-    if(elemento.type=="checkbox"||elemento.type=="radio"){
-        if(elemento.checked){
-            valor;
-            
+// Funciones para devolver los valores en función del tipo de elemento del formulario
+const funcionesParaRetornarValores = {
+    'text': function (textbox) {
+        return textbox.value
+    },
+    'check': function(checkbox) {
+        let valor = "";
+        if (checkbox.checked){
+            valor = checkbox.value;
         }
-    }else if(elemento.type=="text"||elemento.type=="textearea"){
-            valor; 
-
-    }else  if(elemento.type=="select-multiple"){
-        let arraySelect=new Array();
-        for(let opcion of elemento.options){
-            if(opcion.selected){
-                valor=arraySelect.push(opcion.value);
+        return valor;
+    },
+    'select-one': function(select) {
+        let valor = "";
+        if (!select.disabled) {
+            let indiceSeleccionado = select.selectedIndex;
+            let opcionSeleccionada = select.options[indiceSeleccionado];
+            valor =  opcionSeleccionada.value;
+        }
+        return valor;
+    },
+    'select-multiple': function(select) {
+        let valor = [];
+        if (!select.disabled) {
+            for (let indice of select.options) {
+                if (indice.selected) {
+                    valor.push(indice.value);
+                }
             }
         }
-
-    }else if(elemento.type=="select-one"){
-        let indiceselect=elemento.selectIndex
-        valor=elemento.options[indiceselect].value
-            
-        
-    }else{
-        valor="";
+        return valor;
     }
-    
-    return valor;
-    
 }
 
-function validarFormulario(form){
-    let formulario=document.getElementById(form);
-    
-    for(let element of formulario.elements){
-        let resultado=retornaValor(element);
-        let contenido=document.createTextNode(resultado+" ");
-        document.body.appendChild(contenido);
+function retornarValor(elementoFormulario) {
 
+    return funcionesParaRetornarValores[mapeadoTipoElementoFuncion[elementoFormulario.type]](elementoFormulario); 
+}
+
+// AL CLICAR EL BOTÓN VALIDAR SE RECORREN TODOS LOS ELEMENTOS DEL FORMULARIO
+// Y DEVUELVE LOS VALORES EN UN STRING
+function validarFormulario(formularioId) {
+    let nodoForm = document.getElementById(formularioId);
+    let listaElementos = nodoForm.elements;
+    let salidaValidacion = "";
+
+    for(let elemento of listaElementos){
+        if (elemento.type != 'button') {
+            salidaValidacion = salidaValidacion + " " + retornarValor(elemento);
+        }
     }
+
+    let nodoSalida = document.createElement('p');
+    let nodoTextoSalida = document.createTextNode('Resultado de la validación: ' + salidaValidacion);
+
+    nodoSalida.appendChild(nodoTextoSalida);
+    document.body.appendChild(nodoSalida);
+
+    
     
 }
