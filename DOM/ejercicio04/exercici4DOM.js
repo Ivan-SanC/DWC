@@ -63,11 +63,10 @@ function retornarValor(elementoFormulario) {
 // AL CLICAR EL BOTÓN VALIDAR SE RECORREN TODOS LOS ELEMENTOS DEL FORMULARIO
 // Y DEVUELVE LOS VALORES EN UN STRING
 function validarFormulario(formularioId) {
-    let nodoForm = document.getElementById(formularioId);
-    let listaElementos = nodoForm.elements;
+    let form = document.getElementById(formularioId);
     let salidaValidacion = "";
 
-    for(let elemento of listaElementos){
+    for(let elemento of form.elements){
         if (elemento.type != 'button') {
             salidaValidacion = salidaValidacion + " " + retornarValor(elemento);
         }

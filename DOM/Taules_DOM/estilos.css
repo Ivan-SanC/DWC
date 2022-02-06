@@ -1,0 +1,18 @@
+h1 {
+    margin: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    margin: 50px;
+}
+
+.button1{
+    width: 110px;
+}
+.button2{
+    width: 75px;
+}
+.button3{
+    width: 150px;
+}

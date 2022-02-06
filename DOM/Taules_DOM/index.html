@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lliurament - Introducció DOM</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src=tabla.js></script>
+</head>
+<body>
+    <h1>Lliuramente - Introducció al DOM</h1>
+    <table id="tabla">
+        <tr>
+            <td>Celda 1.1</td>
+            <td>Celda 1.2</td>
+        </tr>
+        <tr>
+            <td>Celda 2.1</td>
+            <td>Celda 2.2</td>
+        </tr>
+    </table>
+    <form>
+        <label id="ltext">Text: </label>
+    <input type="text" id="text"><br>
+    <label id="numFila">Núm. Fila </label>
+    <input type="text" id="fila"><br>
+    <label id="numColumna">Núm. Columna</label>
+    <input type="text" id="columna"><br>
+    <input type="button" class="button1" value="Añadir columna" onclick="agregarColumna('tabla','columna','text')">
+    <input type="button" class= "button2" value="Añadir fila" onclick="agregarFila('tabla','fila','text')">
+    <input type="button" class="button3" value="Cambiar valor celda" onclick="cambiarValorCelda('tabla','fila','columna','text')">
+    <br>
+    <input type="button" class="button1" value="Borrar columna" onclick="borrarColumna('tabla','columna')">
+    <input type="button" class="button2" value="Borrar fila" onclick="borrarFila('tabla','fila')">
+    <input type="button" class="button3" value="Cambiar celdas tabla" onclick="cambiarValorTodasCeldas('tabla', 'text')">
+    </form>
+    
+</body>
+</html>
