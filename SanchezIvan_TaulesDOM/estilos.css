@@ -1,0 +1,62 @@
+h1 {
+    margin: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    margin: 50px;
+    text-align: center;
+}
+
+table {
+    width: 25%;
+}
+
+tr {
+    background-color: white;
+}
+
+th {
+    width: 50px;
+}
+
+
+.rojo {
+    background-color: red;
+    color: white;
+
+}
+
+.verde {
+    background-color: forestgreen;
+    color: white;
+}
+
+.azul {
+    background-color: skyblue;
+    color: white;
+}
+
+div {
+    border: 1px solid black;
+}
+
+div.crearTabla {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+div.permutarFilas {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+div.cambiarFondo {
+    position: relative;
+    float: left;
+    padding: 10px;
+}
