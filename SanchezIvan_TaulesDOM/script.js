@@ -1,6 +1,8 @@
 function crearTablaColores(tablaColores,numColores){
     let tabla=document.getElementById(tablaColores);
-    let numColumna=tabla.getElementsByTagName('th').length;
+    //cambiar por rows
+    let numColumna=tabla.tBodies[0].rows[0].cells.length;
+    //let numColumna=tabla.getElementsByTagName('th').length;
     let numFila=document.getElementById(numColores).value;
     
     //limitar numeros
@@ -10,6 +12,8 @@ function crearTablaColores(tablaColores,numColores){
             let datos=generarNumero(numFila);
             //añadir funcion datos
             introducirDatosTabla(tabla,datos);
+            document.getElementById(numColores).disabled=true;
+            document.getElementById(numColores).value="";
         
     }
     //deshabilitar input text al hacer click en crear Tabla
@@ -26,6 +30,7 @@ function crearTablaColores(tablaColores,numColores){
 function crearTabla(numFila,numColumna){
    // let cont=0;
     var tblBody=document.getElementsByTagName('tbody')[0];
+
     for(let i=1;i<=numFila;i++){
         var fila=document.createElement('tr');
         //cont++;
@@ -78,13 +83,17 @@ function introducirDatosTabla(tabla,datos){
 //intencianvian la posicionde las filas 
 function permutarFilas(tablaColores,fila1,fila2){
     let tabla=document.getElementById(tablaColores);
+
+    let valor1=document.getElementById(fila1).value;
     let copia=document.getElementById(fila2).value;
+
     let pos1=document.getElementsByTagName('tr')[document.getElementById(fila1).value];
     let pos2=document.getElementsByTagName('tr')[document.getElementById(fila2).value];
     let aux=document.getElementsByTagName('tr')[parseInt(copia)+1];
+
    
 
-    if(tabla.getElementsByTagName('td').length>0){
+    if(tabla.getElementsByTagName('td').length>0 && copia!=0 && valor1!=0){
     
         tabla.tBodies[0].insertBefore(pos2,pos1);
 
@@ -98,6 +107,18 @@ function permutarFilas(tablaColores,fila1,fila2){
 
 function cambiarFondo(tablaColores,filaFondo){
     //copiar el value de la ultima cell y modificar el style de la pagina
+    let tabla=document.getElementById(tablaColores);
+    let elemento=document.getElementById(filaFondo).value;
+    console.log(elemento);
+    let numColumna=tabla.tBodies[0].rows[0].cells;
+    console.log(numColumna.length);
+    console.log(numColumna.length-1);
+    
+    let posicion=tabla.tBodies[0].rows[elemento].cells[numColumna.length-1].style.backgroundColor;
+    console.log(posicion);
+    document.body.style.background =posicion;
+
+
 }
 
 //deshabilitar cuadro de texto primer boton
