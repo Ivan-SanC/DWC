@@ -116,4 +116,5 @@ function cambiarFondo(tablaColores,filaFondo){
     console.log(color);
     document.body.style.background =color;
 
+    
 }
