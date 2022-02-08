@@ -88,33 +88,35 @@ function introducirDatosTabla(tabla,datos){
 //intenciambian la posicion de las filas 
 function permutarFilas(tablaColores,fila1,fila2){
     let tabla=document.getElementById(tablaColores);
-    let valor1=document.getElementById(fila1).value;
-    let copia=document.getElementById(fila2).value;
+    let valor1=document.getElementById(fila1);
+    let valor2=document.getElementById(fila2);
 
     let pos1=document.getElementsByTagName('tr')[document.getElementById(fila1).value];
     let pos2=document.getElementsByTagName('tr')[document.getElementById(fila2).value];
-    let aux=document.getElementsByTagName('tr')[parseInt(copia)+1];
+    let aux=document.getElementsByTagName('tr')[parseInt(valor2)+1];
 
    
     //solo cambia posiciones si se han creado columnas y si la posición para cambiar no es 0
-    if(tabla.getElementsByTagName('td').length>0 && copia!=0 && valor1!=0){
+    if(tabla.getElementsByTagName('td').length>0 && valor2.value!=0 && valor1.value!=0){
     
         tabla.tBodies[0].insertBefore(pos2,pos1);
         tabla.tBodies[0].insertBefore(pos1,aux);
     }
+    valor1.value="";
+    valor2.value="";
 }
 
 
 function cambiarFondo(tablaColores,filaFondo){
     
     let tabla=document.getElementById(tablaColores);
-    let elemento=document.getElementById(filaFondo).value;
+    let elemento=document.getElementById(filaFondo);
     let numColumna=tabla.tBodies[0].rows[0].cells.length;
     
     
-    let color=tabla.tBodies[0].rows[elemento].cells[numColumna-1].style.backgroundColor;
+    let color=tabla.tBodies[0].rows[elemento.value].cells[numColumna-1].style.backgroundColor;
     console.log(color);
     document.body.style.background =color;
-
+    elemento.value="";
     
 }
