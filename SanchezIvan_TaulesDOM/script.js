@@ -1,8 +1,6 @@
 function crearTablaColores(tablaColores,numColores){
     let tabla=document.getElementById(tablaColores);
-    //numero de columnas
     let numColumna=tabla.tBodies[0].rows[0].cells.length;
-    //let numColumna=tabla.getElementsByTagName('th').length;
     let numFila=document.getElementById(numColores).value;
     
     //limitar numeros entre 1-20
@@ -44,9 +42,12 @@ function crearTabla(numFila,numColumna){
             //insertcells?
             //tblBody.rows[i].insertCells(j);
             columna=document.createElement('td');
+            
+            //cuelgo las columnas de la fila
             fila.appendChild(columna);
 
         }
+        //cuelgo la fila del tbody
         tblBody.appendChild(fila);
 
     }
@@ -80,7 +81,7 @@ function generarNumero(numFila){
 //se llama en crearTablaColores
 function introducirDatosTabla(tabla,datos){
 
-    //for of para sacar la posición de la row y el color
+    //for of para obtener la fila e insertar en las columnas los colores
      for (let[posicion,color]of datos){
 
     tabla.tBodies[0].rows[posicion].cells[0].innerHTML =color[0];
@@ -96,26 +97,23 @@ function permutarFilas(tablaColores,fila1,fila2){
     let tabla=document.getElementById(tablaColores);
     let valor1=document.getElementById(fila1).value;
     let valor2=document.getElementById(fila2).value;
+    let numfilas=tabla.tBodies[0].rows.length;
 
-    let pos1=tabla.tBodies[0].rows[valor1];
-    let pos2=tabla.tBodies[0].rows[valor2];
-    let aux=tabla.tBodies[0].rows[parseInt(valor2)+1];
-    //let pos1=document.getElementsByTagName('tr')[document.getElementById(fila1).value];
-    //let pos2=document.getElementsByTagName('tr')[document.getElementById(fila2).value];
-    //let aux=document.getElementsByTagName('tr')[parseInt(valor2)+1];
 
    
-    //Cambia la posicion si es number, si no es 0 o si valores no son mayores a la fila
-    //y si la tabla se ha creado
-    if(!isNaN(valor1)&&!isNaN(valor2)){
+    //Cambia la posicion si la tabla esta creada si el valor no es 0
+    //y si los valores van de 1 al max de filas
+   
         if(tabla.getElementsByTagName('td').length>0 && valor2!=0 && valor1!=0){
-            if(valor2<=tabla.tBodies[0].rows.length&&valor1<=tabla.tBodies[0].rows.length){
-                //filas seguidas no cambian 1-2 , 2-3
-            tabla.tBodies[0].insertBefore(pos2,pos1);
-            tabla.tBodies[0].insertBefore(pos1,aux);
+            if(valor1<=numfilas&&valor2<numfilas){
+            
+                let pos1=tabla.tBodies[0].rows[valor1].innerHTML;
+                let pos2=tabla.tBodies[0].rows[valor2].innerHTML;
+                
+                tabla.rows[valor1].innerHTML = pos2;
+                tabla.rows[valor2].innerHTML = pos1;
             }
         }
-    }
     limpiarTextbox(); 
 }
 
@@ -124,18 +122,22 @@ function cambiarFondo(tablaColores,filaFondo){
     
     let tabla=document.getElementById(tablaColores);
     let elemento=document.getElementById(filaFondo);
+
     let numFila=tabla.tBodies[0].rows.length;
     let numColumna=tabla.tBodies[0].rows[0].cells.length;
     
-    if(!isNaN(elemento.value)&&numFila>1&&elemento.value<=numFila&&elemento.value>0){
-    let color=tabla.tBodies[0].rows[elemento.value].cells[numColumna-1].style.backgroundColor;
-    console.log(color);
-    document.body.style.background =color;
+    if(numFila>=1 && elemento.value<numFila && elemento.value>0){
+    
+        let color=tabla.tBodies[0].rows[elemento.value].cells[numColumna-1].style.backgroundColor;
+        
+        document.body.style.background =color;
     }
+        
     limpiarTextbox();
     
 }
 
+//Reset de valores
 function limpiarTextbox(){
     document.getElementById("numColores").value="";
     document.getElementById("fila1").value="";
