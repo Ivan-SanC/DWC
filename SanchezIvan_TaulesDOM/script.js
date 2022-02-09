@@ -86,8 +86,7 @@ function introducirDatosTabla(tabla,datos){
     tabla.tBodies[0].rows[posicion].cells[0].innerHTML =color[0];
     tabla.tBodies[0].rows[posicion].cells[1].innerHTML =color[1];
     tabla.tBodies[0].rows[posicion].cells[2].innerHTML =color[2];
-    tabla.tBodies[0].rows[posicion].cells[3].style.backgroundColor =  "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
-    
+    tabla.tBodies[0].rows[posicion].cells[3].style.backgroundColor ="rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
     }
     
 }
@@ -98,21 +97,25 @@ function permutarFilas(tablaColores,fila1,fila2){
     let valor1=document.getElementById(fila1).value;
     let valor2=document.getElementById(fila2).value;
 
-    let pos1=document.getElementsByTagName('tr')[document.getElementById(fila1).value];
-    let pos2=document.getElementsByTagName('tr')[document.getElementById(fila2).value];
-    let aux=document.getElementsByTagName('tr')[parseInt(valor2)+1];
+    let pos1=tabla.tBodies[0].rows[valor1];
+    let pos2=tabla.tBodies[0].rows[valor2];
+    let aux=tabla.tBodies[0].rows[parseInt(valor2)+1];
+    //let pos1=document.getElementsByTagName('tr')[document.getElementById(fila1).value];
+    //let pos2=document.getElementsByTagName('tr')[document.getElementById(fila2).value];
+    //let aux=document.getElementsByTagName('tr')[parseInt(valor2)+1];
 
    
-    //solo cambia posiciones si se han creado columnas y si la posición para cambiar no es 0
+    //Cambia la posicion si es number, si no es 0 o si valores no son mayores a la fila
+    //y si la tabla se ha creado
     if(!isNaN(valor1)&&!isNaN(valor2)){
-    if(tabla.getElementsByTagName('td').length>0 && valor2!=0 && valor1!=0){
-        if(valor2<=tabla.getElementsByTagName('tr').length&&valor1<=tabla.getElementsByTagName('tr').length){
-    
-        tabla.tBodies[0].insertBefore(pos2,pos1);
-        tabla.tBodies[0].insertBefore(pos1,aux);
+        if(tabla.getElementsByTagName('td').length>0 && valor2!=0 && valor1!=0){
+            if(valor2<=tabla.tBodies[0].rows.length&&valor1<=tabla.tBodies[0].rows.length){
+                //filas seguidas no cambian 1-2 , 2-3
+            tabla.tBodies[0].insertBefore(pos2,pos1);
+            tabla.tBodies[0].insertBefore(pos1,aux);
+            }
         }
     }
-}
     limpiarTextbox(); 
 }
 
@@ -121,9 +124,10 @@ function cambiarFondo(tablaColores,filaFondo){
     
     let tabla=document.getElementById(tablaColores);
     let elemento=document.getElementById(filaFondo);
+    let numFila=tabla.tBodies[0].rows.length;
     let numColumna=tabla.tBodies[0].rows[0].cells.length;
     
-    if(!isNaN(elemento.value)&&tabla.getElementsByTagName('td').length>0 ){
+    if(!isNaN(elemento.value)&&numFila>1&&elemento.value<=numFila&&elemento.value>0){
     let color=tabla.tBodies[0].rows[elemento.value].cells[numColumna-1].style.backgroundColor;
     console.log(color);
     document.body.style.background =color;
