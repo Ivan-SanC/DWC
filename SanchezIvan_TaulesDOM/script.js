@@ -6,7 +6,7 @@ function crearTablaColores(tablaColores,numColores){
     let numFila=document.getElementById(numColores).value;
     
     //limitar numeros entre 1-20
-    if(numFila>=1&&numFila<=20){
+    if(numFila>=1&&numFila<=20&&!isNaN(numFila)){
 
         crearTabla(numFila,numColumna);
         console.log(tabla);
@@ -14,10 +14,10 @@ function crearTablaColores(tablaColores,numColores){
             let datos=generarNumero(numFila);
 
             introducirDatosTabla(tabla,datos);
-            //deshabilita el textbox y lo limpia
-            document.getElementById(numColores).disabled=true;
-            document.getElementById(numColores).value="";   
     }
+    //deshabilita el textbox y lo limpia
+    document.getElementById(numColores).disabled=true;
+    limpiarTextbox();
 }
 
 //se llama en creartablaColores
@@ -31,11 +31,18 @@ function crearTabla(numFila,numColumna){
 
     //for para crear las filas
     for(let i=1;i<=numFila;i++){
+
+        //insertrows?
+        //tblBody.insertRow[i];
+        //console.log(tblBody.insertRow[i]);
         let fila=document.createElement('tr');
         let columna="";
 
         //for para crear columnas
-        for(let i=1;i<=numColumna;i++){
+        for(let j=1;j<=numColumna;j++){
+            
+            //insertcells?
+            //tblBody.rows[i].insertCells(j);
             columna=document.createElement('td');
             fila.appendChild(columna);
 
@@ -88,8 +95,8 @@ function introducirDatosTabla(tabla,datos){
 //intenciambian la posicion de las filas 
 function permutarFilas(tablaColores,fila1,fila2){
     let tabla=document.getElementById(tablaColores);
-    let valor1=document.getElementById(fila1);
-    let valor2=document.getElementById(fila2);
+    let valor1=document.getElementById(fila1).value;
+    let valor2=document.getElementById(fila2).value;
 
     let pos1=document.getElementsByTagName('tr')[document.getElementById(fila1).value];
     let pos2=document.getElementsByTagName('tr')[document.getElementById(fila2).value];
@@ -97,13 +104,16 @@ function permutarFilas(tablaColores,fila1,fila2){
 
    
     //solo cambia posiciones si se han creado columnas y si la posición para cambiar no es 0
-    if(tabla.getElementsByTagName('td').length>0 && valor2.value!=0 && valor1.value!=0){
+    if(!isNaN(valor1)&&!isNaN(valor2)){
+    if(tabla.getElementsByTagName('td').length>0 && valor2!=0 && valor1!=0){
+        if(valor2<=tabla.getElementsByTagName('tr').length&&valor1<=tabla.getElementsByTagName('tr').length){
     
         tabla.tBodies[0].insertBefore(pos2,pos1);
         tabla.tBodies[0].insertBefore(pos1,aux);
+        }
     }
-    valor1.value="";
-    valor2.value="";
+}
+    limpiarTextbox(); 
 }
 
 
@@ -113,10 +123,18 @@ function cambiarFondo(tablaColores,filaFondo){
     let elemento=document.getElementById(filaFondo);
     let numColumna=tabla.tBodies[0].rows[0].cells.length;
     
-    
+    if(!isNaN(elemento.value)&&tabla.getElementsByTagName('td').length>0 ){
     let color=tabla.tBodies[0].rows[elemento.value].cells[numColumna-1].style.backgroundColor;
     console.log(color);
     document.body.style.background =color;
-    elemento.value="";
+    }
+    limpiarTextbox();
     
+}
+
+function limpiarTextbox(){
+    document.getElementById("numColores").value="";
+    document.getElementById("fila1").value="";
+    document.getElementById("fila2").value="";
+    document.getElementById("filaFondo").value="";
 }
