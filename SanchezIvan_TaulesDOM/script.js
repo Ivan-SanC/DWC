@@ -120,12 +120,16 @@ function permutarFilas(tablaColores,fila1,fila2){
 
 function cambiarFondo(tablaColores,filaFondo){
     
+    //id
     let tabla=document.getElementById(tablaColores);
     let elemento=document.getElementById(filaFondo);
+
 
     let numFila=tabla.tBodies[0].rows.length;
     let numColumna=tabla.tBodies[0].rows[0].cells.length;
     
+    //if para evitar que no se mueva la cabecera el valor no puede ser 0
+    //y que el valor no sea supeiror al numFilas
     if(numFila>=1 && elemento.value<numFila && elemento.value>0){
     
         let color=tabla.tBodies[0].rows[elemento.value].cells[numColumna-1].style.backgroundColor;
@@ -139,8 +143,16 @@ function cambiarFondo(tablaColores,filaFondo){
 
 //Reset de valores
 function limpiarTextbox(){
-    document.getElementById("numColores").value="";
-    document.getElementById("fila1").value="";
-    document.getElementById("fila2").value="";
-    document.getElementById("filaFondo").value="";
+
+    let form=document.getElementById("formularioTabla");
+
+    //buscamos en la colección de elementos
+    for (let elemento of form.elements){
+        
+    
+        if(elemento.type=='text'){
+            elemento.value="";
+        }
+    }
+    
 }
