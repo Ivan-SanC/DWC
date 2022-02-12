@@ -1,13 +1,16 @@
 function crearTablaColores(tablaColores,numColores){
     let tabla=document.getElementById(tablaColores);
-    let numColumna=tabla.tBodies[0].rows[0].cells.length;
+    //let numColumna=tabla.tBodies[0].rows[0].cells.length;
+    let numColumna=tabla.rows[0].cells.length;
     let numFila=document.getElementById(numColores).value;
     
     //limitar numeros entre 1-20
     if(numFila>=1&&numFila<=20&&!isNaN(numFila)){
 
+        //devuelve el cuerpo de la tabla
         crearTabla(numFila,numColumna);
         console.log(tabla);
+
             //generar un mapa con Array con 3 numeros rgb
             let datos=generarNumero(numFila);
 
@@ -18,12 +21,7 @@ function crearTablaColores(tablaColores,numColores){
     limpiarTextbox();
 }
 
-//se llama en creartablaColores
-//introduce valor de las filas
-//legth para columnas
-//filas<1 || filas>20
-//filas=tr columnas=td
-//opcion insertCells insertRows
+//Se usa en crearTablaColores
 function crearTabla(numFila,numColumna){
     let tblBody=document.getElementsByTagName('tbody')[0];
 
@@ -106,10 +104,12 @@ function permutarFilas(tablaColores,fila1,fila2){
    
         if(tabla.getElementsByTagName('td').length>0 && valor2!=0 && valor1!=0){
             if(valor1<=numfilas&&valor2<numfilas){
-            
+                
+                //Guardo en las variables toda la informacion de la fila(lo que guarda dentro cells+atributos)
                 let pos1=tabla.tBodies[0].rows[valor1].innerHTML;
                 let pos2=tabla.tBodies[0].rows[valor2].innerHTML;
                 
+                //modifica la información que tiene la fila(sobreescribe lo que hay en la fila)
                 tabla.rows[valor1].innerHTML = pos2;
                 tabla.rows[valor2].innerHTML = pos1;
             }
@@ -131,9 +131,11 @@ function cambiarFondo(tablaColores,filaFondo){
     //if para evitar que no se mueva la cabecera el valor no puede ser 0
     //y que el valor no sea supeiror al numFilas
     if(numFila>=1 && elemento.value<numFila && elemento.value>0){
-    
+        
+        //variable para obtener la ultima columna
         let color=tabla.tBodies[0].rows[elemento.value].cells[numColumna-1].style.backgroundColor;
         
+        //modifico el color del fondo del body
         document.body.style.background =color;
     }
         
@@ -146,10 +148,10 @@ function limpiarTextbox(){
 
     let form=document.getElementById("formularioTabla");
 
-    //buscamos en la colección de elementos
+    //buscamos en la colección del formulario el elemento
     for (let elemento of form.elements){
         
-    
+        //si es tipo textbox limpia su .value
         if(elemento.type=='text'){
             elemento.value="";
         }
