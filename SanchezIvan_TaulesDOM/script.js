@@ -21,6 +21,7 @@ function crearTablaColores(tablaColores,numColores){
     limpiarTextbox();
 }
 
+
 //Se usa en crearTablaColores
 function crearTabla(numFila,numColumna){
     let tblBody=document.getElementsByTagName('tbody')[0];
@@ -28,17 +29,12 @@ function crearTabla(numFila,numColumna){
     //for para crear las filas
     for(let i=1;i<=numFila;i++){
 
-        //insertrows?
-        //tblBody.insertRow[i];
-        //console.log(tblBody.insertRow[i]);
         let fila=document.createElement('tr');
         let columna="";
 
         //for para crear columnas
         for(let j=1;j<=numColumna;j++){
             
-            //insertcells?
-            //tblBody.rows[i].insertCells(j);
             columna=document.createElement('td');
             
             //cuelgo las columnas de la fila
@@ -90,6 +86,7 @@ function introducirDatosTabla(tabla,datos){
     
 }
 
+
 //intenciambian la posicion de las filas 
 function permutarFilas(tablaColores,fila1,fila2){
     let tabla=document.getElementById(tablaColores);
@@ -140,8 +137,8 @@ function cambiarFondo(tablaColores,filaFondo){
     }
         
     limpiarTextbox();
-    
 }
+
 
 //Reset de valores
 function limpiarTextbox(){
