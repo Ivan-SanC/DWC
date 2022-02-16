@@ -8,7 +8,7 @@
 
 //Math.random() * (max - min) + min; (Decimal)
 //(Math.random() * (max - min)) + min; (Entero)
-//parseInt(Math.random() * (max+1 - min)) +min entero y incluyendo el max
+//parseInt(Math.random() * (max+1-min))+min  entero y incluyendo el max
 // Ejemplo de uso de la constante PI
 function Circulo(r) {
     this.radio = r;
