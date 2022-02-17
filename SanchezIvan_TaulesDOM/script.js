@@ -119,6 +119,7 @@ function cambiarFondo(tablaColores,filaFondo){
     
     //id
     let tabla=document.getElementById(tablaColores);
+    //fila en la que esta el color posicion
     let elemento=document.getElementById(filaFondo);
 
 

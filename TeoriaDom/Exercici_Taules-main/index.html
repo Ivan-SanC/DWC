@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lliurament - DOM</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src="script3.js"></script>
+</head>
+<body>
+    <h1>Lliurament - DOM</h1>
+    <table id="tablaColores">
+        <caption>Colores aleatorios</caption>
+        <thead>
+            <tr>
+                <th class="rojo">ROJO</th>
+                <th class="verde">VERDE</th>
+                <th class="azul">AZUL</th>
+                <th></th> 
+            </tr>
+        </thead>
+    </table>
+    <form id="formularioTabla">
+        <div class="crearTabla" id="crearTabla">
+            <label id="colores">Num.Colores</label>
+            <input type="text" id="numColores">
+            <br>
+            <br>
+            <input type="button" value="CREAR TABLA" onclick="this.disabled=true; crearTablaColores('tablaColores', 'numColores')">
+            <br>
+        </div>
+        <div class="permutarFilas" id="permutarFilas">
+            <label>Fila 1</label>
+            <input type="text" id="fila1">
+            <label> Fila 2</label>
+            <input type="text" id="fila2">
+            <br>
+            <br>
+            <input type="button" value="PERMUTAR FILAS" onclick="permutarFilas('tablaColores','fila1', 'fila2')">
+        </div>
+        <div class="cambiarFondo" id="cambiarFondo">
+            <label>Fila escogida</label>
+            <input type="text" id="filaFondo">
+            <br>
+            <br>
+            <input type="button" value="CAMBIAR FONDO" onclick="cambiarFondo('tablaColores','filaFondo')"">
+        </div>
+    </form>
+    
+</body>
+</html>
