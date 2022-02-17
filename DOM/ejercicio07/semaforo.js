@@ -4,7 +4,7 @@ function cambiarColor(){
     let rojo=document.getElementById('vermell');
     
     let encendido=document.getElementsByClassName('ences')[0].id;
-    
+    console.log(encendido)
     if(encendido=="verd"){
         verde.setAttribute('class','apagat');
         ambar.setAttribute('class','ences');
