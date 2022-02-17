@@ -50,7 +50,7 @@ function retornaValor(elementoFormulario){
 
     return funcionesRetornar[elementosFunciones[tipo]](elementoFormulario);
 
-    funcionesRetornar.elementosFunciones.tipo()
+    //funcionesRetornar.elementosFunciones.tipo()
 
     /*
     if (tipo == 'text' || tipo == 'textarea') {
@@ -62,7 +62,7 @@ function retornaValor(elementoFormulario){
     } else if (tipo == 'select-one') {
         let indiceSeleccionado = elementoFormulario.selectedIndex;
         valor = elementoFormulario.options[indiceSeleccionado].value
-    } else ifs (tipo == 'select-multiple') {
+    } else if (tipo == 'select-multiple') {
         let arraySelecciones = new Array();
         for (let opcion of elementoFormulario.options){
             if (opcion.selected) {
