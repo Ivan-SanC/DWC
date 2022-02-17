@@ -12,22 +12,24 @@ function numeroRandom(max,min){
 
 function generarDecimo(divContenedor){
     //idcontenedor
-    let contenedor=document.getElementById(divContenedor);
-    //muestra los hicos de un nodo es una collection necesita un for
-    console.log(contenedor.children);
+    let contenedor=document.getElementById(divContenedor).children;
+    //muestra los hijos de un nodo es una collection necesita un for
+    console.log(contenedor);
 
 
     for(let i=0;i<3;i++){
-        const arrayDecimo=Array();
-
         let numero=numeroRandom(max,min);
+
         let p=document.createElement('p');
         let contenido=document.createTextNode(numero);
-        arrayDecimo.push(numero);
-        console.log(arrayDecimo);
+     
         p.appendChild(contenido);
-        contenedor.children[i].appendChild(p);
-        
+        //si los hijos del contenedor tiene hijos
+        if(contenedor[i].children.length==0){
+        contenedor[i].appendChild(p);
+        }else{
+            contenedor[i].replaceChild(p,contenedor[i].children[0]);
+        }
         
 
     }
@@ -36,18 +38,33 @@ function generarDecimo(divContenedor){
     
 }
 
-function realizarSorteo(){
-    let div=document.getElementById('numeroSorteo');
 
+
+function realizarSorteo(){
     let numero=numeroRandom(max,min);
+
+
+    let div=document.getElementById('numeroSorteo');
+    let contenedor=document.getElementById('divContenedor').children;
 
     let p=document.createElement('p');
     let contenido=document.createTextNode(numero);
-
     p.appendChild(contenido);
+
+    if(div.children.length==0){
     div.appendChild(p);
+    }else{
+        div.replaceChild(p,div.children[0]);
+    }
 
+    
+    for(let i=0;i<3;i++){
+        contenedor[i].style.color='red';
 
+        if(contenedor[i].children[0].innerHTML==numero){
+            contenedor[i].style.color='green';
+        }
 
+    }
 
 }

@@ -1,83 +1,95 @@
-// HABILITAR LOS SELECT CUANDO EL CHECKBOX CORRESPONDIENTE ESTÁ SELECCIONADO
-function habilitarSelect(selectId){
-    let nodoSelect = document.getElementById(selectId);
+function habilitarSelect(selectId) {
+    let elementoSelect = document.getElementById(selectId);
 
-    if (nodoSelect.disabled) {
-        nodoSelect.disabled = false;
+    if (elementoSelect.disabled){
+        elementoSelect.disabled = false;
     } else {
-        nodoSelect.disabled = true;
+        elementoSelect.disabled = true;
     }
-};
+}
 
-
-// Mapeo del tipo de elemento con la función que se necesita utilizar para devolver el valor
-const mapeadoTipoElementoFuncion = {
-    'text': 'text',
+const elementosFunciones = {'text':'text',
     'textarea': 'text',
     'checkbox': 'check',
-    'radio': 'check',
-    'select-multiple': 'select',
-    'select-one': 'select-one',
+    'radio':'check',
+    'select-one':'select-one',
     'select-multiple': 'select-multiple'
-};
+    };
 
-// Funciones para devolver los valores en función del tipo de elemento del formulario
-const funcionesParaRetornarValores = {
-    'text': function (textbox) {
-        return textbox.value
+const funcionesRetornar = {
+    'text': function(elementoFormulario) {
+        return elementoFormulario.value;
     },
-    'check': function(checkbox) {
-        let valor = "";
-        if (checkbox.checked){
-            valor = checkbox.value;
+    'check': function(elementoFormulario) {
+        let valor = '';
+        if (elementoFormulario.checked){
+            valor =  elementoFormulario.value;
         }
         return valor;
     },
-    'select-one': function(select) {
-        let valor = "";
-        if (!select.disabled) {
-            let indiceSeleccionado = select.selectedIndex;
-            let opcionSeleccionada = select.options[indiceSeleccionado];
-            valor =  opcionSeleccionada.value;
-        }
+    'select-one': function(elementoFormulario) {
+        let valor = '';
+        let indiceSeleccionado = elementoFormulario.selectedIndex;
+        valor = elementoFormulario.options[indiceSeleccionado].value;
         return valor;
+         
     },
-    'select-multiple': function(select) {
-        let valor = [];
-        if (!select.disabled) {
-            for (let indice of select.options) {
-                if (indice.selected) {
-                    valor.push(indice.value);
-                }
+    'select-multiple': function(elementoFormulario) {
+        let arraySelecciones = new Array();
+        for (let opcion of elementoFormulario.options){
+            if (opcion.selected) {
+                arraySelecciones.push(opcion.value);
             }
         }
-        return valor;
+        return arraySelecciones;
     }
+};
+
+function retornaValor(elementoFormulario){
+    let tipo = elementoFormulario.type;
+
+    return funcionesRetornar[elementosFunciones[tipo]](elementoFormulario);
+
+    funcionesRetornar.elementosFunciones.tipo()
+
+    /*
+    if (tipo == 'text' || tipo == 'textarea') {
+        valor = elementoFormulario.value;
+    } else if (tipo == 'checkbox' || tipo == 'radio'){
+        if (elementoFormulario.checked){
+            valor = elementoFormulario.value;
+        }
+    } else if (tipo == 'select-one') {
+        let indiceSeleccionado = elementoFormulario.selectedIndex;
+        valor = elementoFormulario.options[indiceSeleccionado].value
+    } else ifs (tipo == 'select-multiple') {
+        let arraySelecciones = new Array();
+        for (let opcion of elementoFormulario.options){
+            if (opcion.selected) {
+                arraySelecciones.push(opcion.value);
+            }
+            valor = arraySelecciones;
+        }
+    }
+    return valor;
+*/
 }
 
-function retornarValor(elementoFormulario) {
 
-    return funcionesParaRetornarValores[mapeadoTipoElementoFuncion[elementoFormulario.type]](elementoFormulario); 
-}
-
-// AL CLICAR EL BOTÓN VALIDAR SE RECORREN TODOS LOS ELEMENTOS DEL FORMULARIO
-// Y DEVUELVE LOS VALORES EN UN STRING
-function validarFormulario(formularioId) {
-    let form = document.getElementById(formularioId);
-    let salidaValidacion = "";
-
-    for(let elemento of form.elements){
+function validarFormulario(formularioId){
+    let formulario = document.getElementById(formularioId);
+    let muestraPantalla = "Resultado de la validación: ";
+    for (let elemento of formulario) {
         if (elemento.type != 'button') {
-            salidaValidacion = salidaValidacion + " " + retornarValor(elemento);
+            muestraPantalla += ` ${retornaValor(elemento)}`;
         }
     }
 
-    let nodoSalida = document.createElement('p');
-    let nodoTextoSalida = document.createTextNode('Resultado de la validación: ' + salidaValidacion);
+    let salidaPantalla = document.createElement('p');
+    let textoSalida = document.createTextNode(muestraPantalla);
 
-    nodoSalida.appendChild(nodoTextoSalida);
-    document.body.appendChild(nodoSalida);
+    salidaPantalla.appendChild(textoSalida);
+    formulario.appendChild(salidaPantalla);
 
-    
     
 }
