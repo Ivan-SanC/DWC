@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <h1>DOM</h1>
+    <input type="number" id="input" value="1"><button onclick="cambiar()">CANVIAR</button>
+    <p>Bon dia tot lo dia</p>
+    <p>Dos quan se neguem i un que mira</p>
+    <p>Hola radiola</p>
+    <p>Estam provant es DOM</p>
+    <p>Cards verd taquen, secs piquen</p>
+    <p>Pujar fa suar</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit ...</p>
+    <p>JavaScripts, the best</p>
+    <p>The strength of JavaScript is that you can do anything.</p>
+    <p>Te deix amor la mar com penyora</p>
+    <script>
+
+        function cambiar() {
+            let numero = document.getElementById("input").value;
+
+            // Validar
+            if (numero > 0 && numero <= 10) {
+
+                console.log(numero-1);
+                // Obtener seleccionado
+                //let p=document.getElementsByTagName('p');
+                //let seleccionado=p[numero-1];
+                let seleccionado = document.body.children[parseInt(numero) + 2]; // +2 para evitar elegir H1, el input o el botón
+
+                console.log(seleccionado);
+                // Generar H2 con sus valores
+                let h2Nuevo = document.createElement("h2");
+                h2Nuevo.innerHTML = seleccionado.textContent;
+
+                // Reemplazar
+                seleccionado.parentElement.replaceChild(h2Nuevo, seleccionado);
+            } else {
+                alert("Introduce un número entre 1 y 10");
+            }
+        }
+    </script>
+</body>
+
+</html>

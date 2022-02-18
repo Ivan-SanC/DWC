@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+
+</head>
+
+<body>
+    <h1>Taula numerada</h1>
+    <span>Nº files</span>
+    <input id="filas" type="number">
+    <br>
+    <span>Nº columnes</span>
+    <input id="columnas" type="number">
+    <br><br>
+    <button onclick="generarTabla()">GENERAR TAULA</button>
+    <br>
+    <script>
+
+
+        function generarTabla() {
+            let filas = document.getElementById("filas").value;
+            let columnas = document.getElementById("columnas").value;
+
+            // Generar tabla
+            let tabla = document.createElement("table");
+            tabla.style.border = "1px solid black";
+            tabla.style.textAlign = "center";
+
+            // Recorrer filas
+            for (let i = 0; i < filas; i++) {
+                // Generar fila
+                let fila = document.createElement("tr");
+
+                // Estilizar si es impar
+                if (i % 2 != 0) {
+                    fila.style.background = "yellow";
+                }
+
+                // Recorrer columnas
+                for (let j = 0; j < columnas; j++) {
+                    // Generar columna y estilizar
+                    let col = document.createElement("td");
+                    col.style.border = "1px solid black";
+
+                    // Generar y añadir número a celda
+                    let txt = document.createTextNode((i * 4) + j + 1);
+                    col.appendChild(txt);
+
+                    // Añadir columna a fila
+                    fila.appendChild(col);
+                }
+
+                // Añadir fila
+                tabla.appendChild(fila);
+            }
+
+            // Añadir tabla
+            document.body.appendChild(tabla);
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

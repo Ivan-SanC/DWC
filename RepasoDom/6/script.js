@@ -22,7 +22,7 @@ function generarDecimo(divContenedor){
         if(contenedor[i].children.length==0){
             contenedor[i].appendChild(p);
         }else{
-            contenedor[i].replaceChild(contenido,contenedor[i].children[0]);
+            contenedor[i].replaceChild(p,contenedor[i].children[0]);
         }
 
     }

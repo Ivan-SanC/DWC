@@ -12,6 +12,7 @@ function numeroRandom(max,min){
 
 function generarDecimo(divContenedor){
     //idcontenedor
+    //esto seria ya dentro del contenedor serian los hijos (hijos)
     let contenedor=document.getElementById(divContenedor).children;
     //muestra los hijos de un nodo es una collection necesita un for
     console.log(contenedor);
@@ -24,10 +25,12 @@ function generarDecimo(divContenedor){
         let contenido=document.createTextNode(numero);
      
         p.appendChild(contenido);
-        //si los hijos del contenedor tiene hijos
+        //si los hijos del contenedor tiene hijos (nietos)
         if(contenedor[i].children.length==0){
+            //crea la p con todo
         contenedor[i].appendChild(p);
         }else{
+            //si ya existe la p lo cambia por otro (cambia el hijo)
             contenedor[i].replaceChild(p,contenedor[i].children[0]);
         }
         
