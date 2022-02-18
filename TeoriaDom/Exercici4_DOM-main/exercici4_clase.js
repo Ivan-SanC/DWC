@@ -61,8 +61,10 @@ function retornaValor(elementoFormulario){
         }
     } else if (tipo == 'select-one') {
         let indiceSeleccionado = elementoFormulario.selectedIndex;
+        if(indiceSeleccionado){
         valor = elementoFormulario.options[indiceSeleccionado].value
-    } else ifs (tipo == 'select-multiple') {
+        }
+    } else if (tipo == 'select-multiple') {
         let arraySelecciones = new Array();
         for (let opcion of elementoFormulario.options){
             if (opcion.selected) {

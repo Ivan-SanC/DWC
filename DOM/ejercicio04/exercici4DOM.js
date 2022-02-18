@@ -61,7 +61,9 @@ function retornaValor(elementoFormulario){
         }
     } else if (tipo == 'select-one') {
         let indiceSeleccionado = elementoFormulario.selectedIndex;
+        if(indiceSeleccionado){
         valor = elementoFormulario.options[indiceSeleccionado].value
+        }
     } else if (tipo == 'select-multiple') {
         let arraySelecciones = new Array();
         for (let opcion of elementoFormulario.options){
@@ -71,6 +73,7 @@ function retornaValor(elementoFormulario){
             valor = arraySelecciones;
         }
     }
+
     return valor;
 */
 }

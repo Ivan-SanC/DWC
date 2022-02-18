@@ -25,9 +25,13 @@ function borrarTextBoxes() {
 }
 
 function crearTablaColores(tablaId, textoId) {
+    //id
     let tabla = document.getElementById(tablaId);
+    //filas
     let numeroFilas = document.getElementById(textoId).value;
+    //columnas
     let numeroColumnas = tabla.rows[0].cells.length
+    //validar del 1 al 20
     let patronNumero = /^(0|1?[0-9]|20)$/;
 
     borrarTextBoxes();
@@ -36,8 +40,10 @@ function crearTablaColores(tablaId, textoId) {
 
     let arrayColores = crearDatos(numeroFilas);
 
+    //comprueba que sea del 1 al 20
     if (patronNumero.test(numeroFilas)) {
         let tBody = crearTabla(numeroFilas, numeroColumnas);
+        //inserta el tBody creado en la tabla
         tabla.appendChild(tBody);
 
         introducirDatosTabla(tabla, arrayColores);
