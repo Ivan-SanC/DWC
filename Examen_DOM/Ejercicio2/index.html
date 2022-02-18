@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTADÍSTICAS LETRAS 2</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <script src="estadisticas_2.js"></script>
+</head>
+<body>
+    <div>
+        <p>Escribe lo que quieras</p>
+        <textarea id="textarea" rows="5" cols="50" maxlength="150"></textarea>
+        <br>
+        <br>
+        <input type="button" value="ESTADÍSTICAS" onclick="mostrarEstadisticas('textarea')">
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>LETRA</th>
+                <th>NºVECES</th>
+                <th>% APARICIONES</th>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

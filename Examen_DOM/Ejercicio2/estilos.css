@@ -1,0 +1,9 @@
+div {
+    margin: 50px;
+    max-width: 400px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    margin: 50px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALIDAR FORMULARIO</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src="datosPersonales.js"></script>
+</head>
+<body>
+    <h1>FORMULARIO DATOS PERSONALES</h1>
+    <form id="formulario">
+        <div id="divDatosPersonales"> 
+            <h2>Datos personales</h2>
+            <label>Nombre</label>
+            <input type="text">
+            <br>
+            <br>
+            <label>Apellidos</label>
+            <input type="text"> <br> <br>
+            <input type="button" value="VALIDAR" onclick="validarDatos('formulario')">
+        </div>
+        <div id="divRangoEdad">
+            <h2>Rango de edad</h2>
+            <p>Indique su rango de edad</p>
+            <input type="radio" id="adolescencia" name="rangoEdad" value="14-18">
+            <label for="adolescencia">14-18</label><br>
+            <input type="radio" id="juventud" name="rangoEdad" value="19-26">
+            <label for="juventud">19-26</label><br>
+            <input type="radio" id="adultez" name="rangoEdad" value="27-59">
+            <label for="adultez">27-59</label><br>
+            <input type="radio" id="mayor" name="rangoEdad" value=">59">
+            <label for="mayor">>59</label><br><br>
+            <input type="button" value="VALIDAR" onclick="validarDatos('formulario')">
+        </div>
+        
+    </form>
+</body>
+</html>
