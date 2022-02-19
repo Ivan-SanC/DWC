@@ -54,7 +54,7 @@ let a3 = ['Saul', 'Rocío', , 'María']; // Declaración con un elemento indefin
 console.log(a3);
 
 // ELIMINAR ELEMENTOS DE UN ARRAY
-// El elemento eliminado para a ser indefinido
+// El elemento eliminado pasa a ser indefinido
 const dias=['Lunes', 'Martes', 'Miércoles', 'Jueves',
             'Viernes', 'Sábado', 'Domingo'];
 delete dias[2];
